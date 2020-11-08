@@ -1,0 +1,64 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Word Game</title>
+
+    <link href='https://fonts.googleapis.com/css?family=Inconsolata:400,700&subset=latin,latin-ext' rel='stylesheet'
+        type='text/css'>
+
+    <link rel="stylesheet" href="static/style.css" type="text/css" />
+    <script src="static/wordgame.js"></script>
+
+</head>
+
+
+<body>
+    <div id="pojemnik">
+        <div id="topnav">
+            <ul>
+                <li><a>Biology</a></li>
+                <li style="float:right"><a>WordGame</a></li>
+            </ul>
+        </div>
+        <!-- select 2nd topnav for user-->
+        {% if name %}
+        <!-- topnav for admin-->
+        <div class="weeks">
+            <ul class="basic">
+                <li><a href="add.question.html">Add Question</a></li>
+                <li><a href="questions.html">Edit Questions</a></li>
+                <li style="float:right"><a href="#">Log Out</a></li>
+                <li style="float:right"><a href="../account">My Account</a></li>
+            </ul>
+        </div>
+        {% else %}
+        <!-- topnav for pupil/user-->
+        <div class="weeks">
+            <ul class="basic">
+                <li class="basic"><a>week:</a></li>
+                <li><a>1</a></li>
+                <li><a>2</a></li>
+                <li><a>3</a></li>
+                <li><a>4</a></li>
+                <li><a>5</a></li>
+                <li><a>6</a></li>
+                <li><a>7</a></li>
+                <li><a>8</a></li>
+                <li><a>9</a></li>
+                <li><a>10</a></li>
+                <li><a>11</a></li>
+                <li><a>12</a></li>
+                <li style="float:right"><a>all questions</a></li>
+            </ul>
+        </div>
+        {% endif %}
+
+        {% block content %} {% endblock %}
+
+    </div>
+    <footer>&copy; APP 2020 by Marta</footer>
+</body>
+
+</html>

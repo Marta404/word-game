@@ -1,0 +1,86 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<title>Word Game - add questions</title>
+
+	<link href='https://fonts.googleapis.com/css?family=Inconsolata:400,700&subset=latin,latin-ext' rel='stylesheet'
+		type='text/css'>
+
+	<link rel="stylesheet" href="static/style.css" type="text/css" />
+
+
+</head>
+
+<body>
+	<div id="pojemnik">
+		<div id="topnav">
+			<ul>
+				<li><a href="module.html">Biology</a></li>
+				<li style="float:right"><a href="newgame.html" target="_blank">WordGame</a></li>
+			</ul>
+		</div>
+		<div class="weeks">
+			<ul class="basic">
+				<li><a href="add.question.html">Add Question</a></li>
+				<li><a href="questions.html">Edit Questions</a></li>
+				<li style="float:right"><a href="#">Log Out</a></li>
+				<li style="float:right"><a href="../account">My Account</a></li>
+			</ul>
+		</div>
+		<!-- BLOCK CONTENT-->
+		<div>
+			<!-- div with forms-->
+
+			<h1>Add a new question</h1>
+
+			<form class="questionform2" action="">
+
+				<div class="row">
+					<div class="col-35"><label for="fquestion2">Question:</label></div>
+					<div class="col-35"><label for="fanswer2">Answer:</label> <span class=small>(only letters and
+							numbers!)</span>
+					</div>
+					<div class="col-20"><label for="weeks">Select week number:</label></div>
+				</div>
+
+				<div class="row">
+					<div class="col-35"> <textarea id="fquestion2" name="fquestion2"
+							placeholder="type in question ..."></textarea>
+					</div>
+					<div class="col-35"> <textarea id="fanswer2" name="lfanswer2"
+							placeholder="type in correct answer (only letters and numbers)..."></textarea>
+					</div>
+					<div class="col-15">
+						<select id="weeks" name="weeks">
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">5</option>
+							<option value="6">6</option>
+							<option value="7">7</option>
+							<option value="8">8</option>
+							<option value="9">9</option>
+							<option value="10">10</option>
+							<option value="11">11</option>
+							<option value="12">12</option>
+						</select>
+					</div>
+
+					<div class="col-10" style="float:right; padding-bottom: 6px; padding-left: 26px;"><input
+							type="submit" value="Submit"></div>
+				</div>
+
+			</form>
+
+
+		</div> <!-- div with forms end-->
+		<!-- BLOCK CONTENT END-->
+
+	</div>
+	<footer>&copy; APP 2020 by Marta</footer>
+</body>
+
+</html>
