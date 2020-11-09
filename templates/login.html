@@ -1,0 +1,22 @@
+{% extends "word-game.html" %}
+{% block content %}
+<!-- BLOCK CONTENT-->
+<!-- div z formularzem questionform2-->
+<div class="row">
+	<h1>Log In</h1>
+	<h1>{{% name %}}</h1>
+	<form class="questionform2" action="" method="post" name="form">
+
+		<div class="row">
+			<div class="col-35"><label for="email1">Email:</label></div>
+			<div class="col-35"><input type="email" name="email1" id="email1" /></div>
+		</div>
+
+		<div class="col-10" style="float:right; padding-bottom: 6px; padding-left: 26px;"><input type="submit"
+				value="Submit"></div>
+</div>
+
+</form>
+</div><!-- div z formularzem end -->
+<!-- BLOCK CONTENT END-->
+{% endblock %}
