@@ -3,7 +3,9 @@ app = Flask(__name__)
 
 
 @app.route('/')
-def root():
+# for testing admin panel navigation - temporary directory
+@app.route('/<name>')
+def root(name=None):
     return render_template('word-game.html')
 
 
