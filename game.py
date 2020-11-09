@@ -6,7 +6,8 @@ app = Flask(__name__)
 # for testing admin panel navigation - temporary directory
 @app.route('/<name>')
 def root(name=None):
-    return render_template('word-game.html')
+    # templates word-game.html + newgame.html
+    return render_template('newgame.html')
 
 
 @app.route('/admin/')
