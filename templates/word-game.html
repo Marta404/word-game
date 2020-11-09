@@ -22,38 +22,6 @@
                 <li style="float:right"><a>WordGame</a></li>
             </ul>
         </div>
-        <!-- select 2nd topnav for user-->
-        {% if name %}
-        <!-- topnav for admin-->
-        <div class="weeks">
-            <ul class="basic">
-                <li><a href="../admin/add">Add Question</a></li>
-                <li><a href="../admin/edit">Edit Questions</a></li>
-                <li style="float:right"><a href="#">Log Out</a></li>
-                <li style="float:right"><a href="../account">My Account</a></li>
-            </ul>
-        </div>
-        {% else %}
-        <!-- topnav for pupil/user-->
-        <div class="weeks">
-            <ul class="basic">
-                <li class="basic"><a>week:</a></li>
-                <li><a>1</a></li>
-                <li><a>2</a></li>
-                <li><a>3</a></li>
-                <li><a>4</a></li>
-                <li><a>5</a></li>
-                <li><a>6</a></li>
-                <li><a>7</a></li>
-                <li><a>8</a></li>
-                <li><a>9</a></li>
-                <li><a>10</a></li>
-                <li><a>11</a></li>
-                <li><a>12</a></li>
-                <li style="float:right"><a>all questions</a></li>
-            </ul>
-        </div>
-        {% endif %}
 
         {% block content %} {% endblock %}
 
