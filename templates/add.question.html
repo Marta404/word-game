@@ -1,0 +1,52 @@
+{% extends "word-game.html" %}
+{% block content %}
+<!-- BLOCK CONTENT-->
+<div>
+	<!-- div with forms-->
+
+	<h1>Add a new question</h1>
+
+	<form class="questionform2" action="">
+
+		<div class="row">
+			<div class="col-35"><label for="fquestion2">Question:</label></div>
+			<div class="col-35"><label for="fanswer2">Answer:</label> <span class=small>(only letters and
+					numbers!)</span>
+			</div>
+			<div class="col-20"><label for="weeks">Select week number:</label></div>
+		</div>
+
+		<div class="row">
+			<div class="col-35"> <textarea id="fquestion2" name="fquestion2"
+					placeholder="type in question ..."></textarea>
+			</div>
+			<div class="col-35"> <textarea id="fanswer2" name="lfanswer2"
+					placeholder="type in correct answer (only letters and numbers)..."></textarea>
+			</div>
+			<div class="col-15">
+				<select id="weeks" name="weeks">
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+					<option value="6">6</option>
+					<option value="7">7</option>
+					<option value="8">8</option>
+					<option value="9">9</option>
+					<option value="10">10</option>
+					<option value="11">11</option>
+					<option value="12">12</option>
+				</select>
+			</div>
+
+			<div class="col-10" style="float:right; padding-bottom: 6px; padding-left: 26px;"><input type="submit"
+					value="Submit"></div>
+		</div>
+
+	</form>
+
+
+</div> <!-- div with forms end-->
+<!-- BLOCK CONTENT END-->
+{% endblock %}
