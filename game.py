@@ -11,5 +11,6 @@ def root():
 def admin():
     return render_template('admin.html')
 
- if __name__ == "__main__":
-     app.run(host='0.0.0.0', debug=True)
+
+if __name__ == "__main__":
+    app.run(host='0.0.0.0', debug=True)
