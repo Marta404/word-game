@@ -16,8 +16,8 @@ def admin():
         print(request.form)
         name = request.form['email1']
         # templates word-game.html + admin.html body content
-        return render_template('login.html')
-        # return "Hello %s" % name
+        # return render_template('login.html')
+        return "Hello %s" % name
     else:
         return render_template('login.html')
 
