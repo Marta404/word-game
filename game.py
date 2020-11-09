@@ -15,19 +15,17 @@ def admin(name=None):
     # templates word-game.html + admin.html body content
     return render_template('admin.html')
 
+
 # in test mode - admin panel directories - no credentials required yet
-
-
 @app.route('/admin/add/')
-def admin_add():
+def admin_add(name=None):
     # templates word-game.html + add.questions.html body content
     return render_template('add.question.html')
 
+
 # in test mode - admin panel directories - no credentials required yet
-
-
 @app.route('/admin/edit/')
-def admin_edit():
+def admin_edit(name=None):
     # templates word-game.html + edit.questions.html body content
     return render_template('edit.questions.html')
 
