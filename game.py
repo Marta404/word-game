@@ -11,15 +11,15 @@ def root():
 @app.route('/admin/', methods=['POST', 'GET'])
 # for testing admin panel navigation - temporary directory
 def admin():
-    return render_template('login.html')
-    # if request.method == 'POST':
-    #     print(request.form)
-    #     name = request.form['email1']
-    #     # templates word-game.html + admin.html body content
-    #     # return render_template('login.html')
-    #     return "Hello %s" % name
-    # else:
-    #     return render_template('login.html')
+    # return render_template('login.html')
+    if request.method == 'POST':
+        print(request.form)
+        name = request.form['email1']
+        # templates word-game.html + admin.html body content
+        # return render_template('login.html')
+        return "Hello %s" % name
+    else:
+        return render_template('login.html')
 
 
 # in test mode - admin panel directories - no credentials required yet
