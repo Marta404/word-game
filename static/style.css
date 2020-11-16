@@ -293,8 +293,7 @@ span.small {
 .col-55 {
   float: left;
   width: 55%;
-  margin: 6px 6px 0 6px;
-  padding: 16px;
+  margin: 6px;
   box-sizing: border-box;
 }
 /* Clear floats after the columns */
