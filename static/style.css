@@ -291,10 +291,10 @@ span.small {
   box-sizing: border-box;
 }
 .col-55 {
-  float: left;
+  /* float: left; */
   width: 55%;
   margin: 6px 6px 0 6px;
-  padding-bottom: 6px;
+  padding: 16px;
   box-sizing: border-box;
 }
 /* Clear floats after the columns */
