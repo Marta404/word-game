@@ -206,6 +206,7 @@ span.small {
 	border: solid 2px #999;
 	margin: 10px 0;
 	background-color: #fefefe;
+	padding: 4px;
 }
 .questionform2 select {
   width: 10%;
