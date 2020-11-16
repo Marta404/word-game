@@ -36,5 +36,11 @@ def admin_edit():
     return render_template('edit.questions.html')
 
 
+@app.route('/admin/account/')
+def admin_account():
+    # templates word-game.html + edit.questions.html body content
+    return render_template('account.html')
+
+
 if __name__ == "__main__":
     app.run(host='0.0.0.0', debug=True)
