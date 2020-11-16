@@ -295,17 +295,11 @@ span.small {
 	padding-left: 40px;
 	padding-bottom: 20px;
 	padding-top: 20px;
+	background-color: #fefefe;
 }
-/* .divcenter{
-	margin-left: auto;
-	margin-right: auto;
-	max-width: 300px;
-} */
 
 .sto{
-	padding-left: 40px;
-	padding-bottom: 20px;
-	padding-top: 20px;
+	
 }
 /* Clear floats after the columns */
 .row:after {
