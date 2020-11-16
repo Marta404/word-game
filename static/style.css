@@ -309,8 +309,17 @@ span.small {
 .pp-5{
 	padding: 5px 0;
 }
-.pp-5 a{
+.pp-5 a:link{
 	color: #111;
+}
+.pp-5 a:visited{
+	color: #111;
+}
+.pp-5 a:active{
+	color: #111;
+}
+.pp-5 a:hover{
+	color: #ef920c;
 }
 /* On screens that are less than 700px, display the bar vertically, instead of horizontally */
 @media screen and (max-width: 700px) {
