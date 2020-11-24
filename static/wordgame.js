@@ -40,7 +40,7 @@ for (i = 0; i < lenght; i++) {
 }
 
 function write_password() {
-	document.getElementById("plansza").innerHTML = password1;
+	document.getElementById("lettersandnumbers").innerHTML = password1;
 	document.getElementById("question").innerHTML = question1;
 }
 
