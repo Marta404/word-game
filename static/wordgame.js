@@ -28,7 +28,7 @@ password = password.toUpperCase();
 
 var lenght = password.length;
 var errors_number = 0;
-
+// add sound
 var yes = new Audio("yes.wav");
 var no = new Audio("no.wav");
 
@@ -142,7 +142,7 @@ function sprawdz(nr) {
 		//wrong answer
 		errors_number++;
 		var picture = "img/s" + errors_number + ".png";
-		document.getElementById("szubienica").innerHTML = '<img src="static/' + picture + '" alt="" />';
+		document.getElementById("stars").innerHTML = '<img src="static/' + picture + '" alt="" />';
 	}
 
 	//Correct
