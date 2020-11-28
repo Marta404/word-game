@@ -1,10 +1,10 @@
 DROP TABLE IF EXISTS questions;
 
 CREATE TABLE questions (
-	id INT PRIMARY KEY,
+	id INTEGER PRIMARY KEY ASC,
 	question TEXT,
 	answer TEXT,
-	week NUM
+	week TEXT
 );
 
 
