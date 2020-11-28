@@ -33,7 +33,19 @@ def init_db():
 def root():
     db = get_db()
     db.cursor().exctute(
-        'insert into questions values ("What is the name of the biggest part of the human brain?")')
+        'insert into questions values ( NULL, "What is the name of the biggest part of the human brain?". "The cerebrum", "1")')
+    db.commit()
+
+    page = []
+    page.append('<html><ul>')
+    sql = "SELECT rowid, * FROM questions ORDER BY week"
+    for row in db.cursor().execute(sql):
+        page.append('<li>')
+        page.append(str(row))
+        page.append('</li>')
+
+    page.append('</ul></html>')
+    return ''.join(page)
 
 
 if __name__ == "__main__":
