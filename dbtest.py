@@ -5,6 +5,8 @@ from flask import Flask
 app = Flask(__name__)
 db_location = 'var/gamedb.db'
 
+# get db
+
 
 def get_db():
     db = getattr(g, 'db', None)
