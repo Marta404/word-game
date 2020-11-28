@@ -19,7 +19,7 @@ def get_db():
 @app.teardown_appcontext
 def close_db_connection(exception):
     db = getattr(g, 'db', None)
-    if db in not None:
+    if db is not None:
         db.close()
 
 
