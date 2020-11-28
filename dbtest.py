@@ -1,7 +1,6 @@
-from flask import Flask, g
 import sqlite3
 
-from flask import Flask
+from flask import Flask, g
 app = Flask(__name__)
 db_location = 'var/gamedb.db'
 
