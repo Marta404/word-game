@@ -78,8 +78,7 @@ def delete(id):
     try:
         db.session.delete(task_to_delete)
         db.session.commit()
-        delmessage = 'Question has been deleted.'
-        return render_template('add.question.html', delmessage=delmessage)
+        return render_template('deleted.html')
     except:
         return 'There was a problem deleting that task'
 
