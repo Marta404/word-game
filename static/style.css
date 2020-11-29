@@ -265,6 +265,16 @@ span.small {
   border-radius: 4px;
   cursor: pointer;
 }
+/*question table*/
+.qtable{
+	width: 100%;
+}
+.qtable tr{
+	width: 100%;
+	padding: 5px;
+	border-bottom: 1px white solid;
+	box-sizing: border-box;
+}
 
 /*rows and columns*/
 .col-10 {
