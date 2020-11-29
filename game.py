@@ -78,7 +78,7 @@ def delete(id):
     try:
         db.session.delete(task_to_delete)
         db.session.commit()
-        return redirect('/admin/edit/')
+        return redirect('/admin/add/')
     except:
         return 'There was a problem deleting that task'
 
