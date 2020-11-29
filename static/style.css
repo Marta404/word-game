@@ -275,9 +275,8 @@ span.small {
 	border-bottom: 1px white solid;
 	box-sizing: border-box;
 }
-.qtable table .cellweek{
-	width: 15%;
-	text-align: center !important;
+.cellweek{
+	padding-left: 10px;
 }
 
 /*rows and columns*/
