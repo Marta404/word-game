@@ -65,7 +65,7 @@ def admin_add():
 
     else:
         # render all the questions which are currently in the db ---> pierwszy == .first()
-        questions = Todo.query.order_by(Todo.id).all()
+        questions = Todo.query.order_by(Todo.week).all()
         # templates word-game.html + add.questions.html body content
         return render_template('add.question.html', questions=questions)
 
