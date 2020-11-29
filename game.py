@@ -74,11 +74,11 @@ def admin_add():
 # to delete a question from the list/db
 def delete(id):
     task_to_delete = Todo.query.get_or_404(id)
-    delmessage = 'Question has been deleted.'
 
     try:
         db.session.delete(task_to_delete)
         db.session.commit()
+        delmessage = 'Question has been deleted.'
         return redirect('/admin/add/', delmessage=delmessage)
     except:
         return 'There was a problem deleting that task'
