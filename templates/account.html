@@ -6,7 +6,6 @@
 <div class="weeks">
 	<ul class="basic">
 		<li><a href="../add">Add Question</a></li>
-		<li><a href="../edit">Edit Questions</a></li>
 		<li style="float:right"><a href="#">Log Out</a></li>
 		<li style="float:right"><a href="../account">My Account</a></li>
 	</ul>
@@ -16,7 +15,33 @@
 
 	<h1>My account details</h1>
 
-
+	{% if admin|length < 1 %}
+	<h4>There is no data.</h4>
+	{% else %}
+	<h4>My account details</h4>
+	<table>
+		<tr>
+			<th>First Name</th>
+			<th>Second Name</th>
+			<th>Email</th>
+			<th>ID</th>
+			<th>Action</th>
+		</tr>
+		{% for admin in admins %}
+		<tr>
+			<td>{{ admin.fname }}</td>
+			<td>{{ admin.sname }}</td>
+			<td>{{ admin.email }}</td>
+			<td>{{ admin.id }}</td>
+			<td>
+				<a href="/admin/account/{{admin.id}}">Delete</a>
+				<br>
+				<a href="/admin/account/{{admin.id}}">Update</a>
+			</td>
+		</tr>
+		{% endfor %}
+	</table>
+	{% endif %}
 
 
 </div> <!-- div with forms end-->
