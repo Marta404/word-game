@@ -18,7 +18,14 @@ class Todo(db.Model):
     week = db.Column(db.String(5), nullable=False)
     date_created = db.Column(db.DateTime, default=datetime.utcnow)
 
+
+class Admin(db, Model):
+    id = db.Column(db.Integer, primary_key=True)
+    fname = db.Column(db.String(100), nullable=False)
+    sname = db.Column(db.String(100), nullable=False)
+    email = db.Column(db.String(100), nullable=False)
     # to retrieve what has been created; to get from the database the question and it's id
+
     def __repr__(self):
         return '<Question %r>' % self.id
 
