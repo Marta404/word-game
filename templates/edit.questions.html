@@ -14,22 +14,22 @@
 <!-- div z formularzem questionform2-->
 <div class="row">
 	<h1>Edit questions</h1>
-	<form class="questionform2" action="">
+	<form class="questionform2" action="/admin/edit/{{question.id}}" method="POST">
 
 		<div class="row">
-			<div class="col-35"><label for="fquestion2">Question:</label></div>
-			<div class="col-35"><label for="fanswer2">Answer:</label></div>
+			<div class="col-35"><label for="question">Question:</label></div>
+			<div class="col-35"><label for="answer">Answer:</label></div>
 			<div class="col-20"><label for="weeks">Select week number:</label></div>
 		</div>
 
 		<div class="row">
-			<div class="col-35"> <textarea id="fquestion2" name="fquestion2"
-					placeholder="existing question from database..."></textarea></div>
-			<div class="col-35"> <textarea id="fanswer2" name="lfanswer2"
-					placeholder="existing answer from database..."></textarea>
+			<div class="col-35"> <textarea id="question1" name="question" value="{{question.question}}"></textarea>
+			</div>
+			<div class="col-35"> <textarea id="answer" name="answer" value="{{question.answer}}"></textarea>
 			</div>
 			<div class="col-15">
 				<select id="weeks" name="weeks">
+					<option value="{{question.week}}">{{question.week}}</option>
 					<option value="1">1</option>
 					<option value="2">2</option>
 					<option value="3">3</option>
@@ -46,7 +46,7 @@
 			</div>
 
 			<div class="col-10" style="float:right; padding-bottom: 6px; padding-left: 26px;"><input type="submit"
-					value="Submit"></div>
+					value="Update"></div>
 		</div>
 
 	</form>

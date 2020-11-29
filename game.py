@@ -85,10 +85,23 @@ def delete(id):
 # in test mode - admin panel directories - no credentials required yet
 
 
-@app.route('/admin/edit/', methods=['POST', 'GET'])
-def admin_edit():
-    # templates word-game.html + edit.questions.html body content
-    return render_template('edit.questions.html')
+@app.route('/admin/edit/<int:id>', methods=['POST', 'GET'])
+def admin_edit(id):
+    question = Todo.query.get_or_404(id)
+
+    if request.method == 'POST':
+        # update logic
+        question.question = request.form['question']
+        question.answer = request.form['answer']
+        question.week = request.form['weeks']
+        try:
+            db.session.commit()
+            return redirect('/admin/add/')
+        except:
+            return 'There was an issue with updating the task'
+
+    else:
+        return render_template('edit.questions.html', question=question)
 
 
 @app.route('/admin/account/')
