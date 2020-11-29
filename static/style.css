@@ -274,10 +274,12 @@ span.small {
 	padding: 5px;
 	border-bottom: 1px white solid;
 	box-sizing: border-box;
+	text-align: left;
 }
 .cellweek{
 	padding-left: 15px;
 }
+
 
 /*rows and columns*/
 .col-10 {
