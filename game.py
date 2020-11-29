@@ -23,7 +23,7 @@ class Todo(db.Model):
         return '<Question %r>' % self.id
 
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def root():
     # templates word-game.html + newgame.html body content
     return render_template('newgame.html')
@@ -78,6 +78,7 @@ def delete(id):
     try:
         db.session.delete(task_to_delete)
         db.session.commit()
+        delmessage = 'Question has been deleted.'
         return redirect('/admin/add/')
     except:
         return 'There was a problem deleting that task'
