@@ -85,6 +85,7 @@ def delete(id):
 # in test mode - admin panel directories - no credentials required yet
 
 
+@app.route('/admin/edit/')
 @app.route('/admin/edit/<int:id>', methods=['POST', 'GET'])
 def admin_edit(id):
     question = Todo.query.get_or_404(id)
