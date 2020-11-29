@@ -19,18 +19,17 @@
 	<form class="questionform2" action="">
 
 		<div class="row">
-			<div class="col-35"><label for="fquestion2">Question:</label></div>
-			<div class="col-35"><label for="fanswer2">Answer:</label> <span class=small>(only letters and
+			<div class="col-35"><label for="question">Question:</label></div>
+			<div class="col-35"><label for="answer">Answer:</label> <span class=small>(only letters and
 					numbers!)</span>
 			</div>
 			<div class="col-20"><label for="weeks">Select week number:</label></div>
 		</div>
 
 		<div class="row">
-			<div class="col-35"> <textarea id="fquestion2" name="fquestion2"
-					placeholder="type in question ..."></textarea>
+			<div class="col-35"> <textarea id="question" name="question" placeholder="type in question ..."></textarea>
 			</div>
-			<div class="col-35"> <textarea id="fanswer2" name="lfanswer2"
+			<div class="col-35"> <textarea id="answer" name="answer"
 					placeholder="type in correct answer (only letters and numbers)..."></textarea>
 			</div>
 			<div class="col-15">
@@ -59,6 +58,7 @@
 	{% if tasks|length < 1 %}
 	<h4>There is no questions. Create a new question.</h4>
 	{% else %}
+	<h4>The questions list.</h4>
 	<table>
 		<tr>
 			<th>Question</th>
@@ -66,15 +66,15 @@
 			<th>Week</th>
 			<th>Actions</th>
 		</tr>
-		{% for task in tasks %}
+		{% for question in questions %}
 		<tr>
-			<td>{{ task.content }}</td>
-			<td>{{ task.date_created.date() }}</td>
-			<td>{{ task.date_created.date() }}</td>
+			<td>{{ question.question }}</td>
+			<td>{{ question.answer }}</td>
+			<td>{{ question.week }}</td>
 			<td>
-				<a href="/delete/{{task.id}}">Delete</a>
+				<a href="/admin/delete/{{question.id}}">Delete</a>
 				<br>
-				<a href="/update/{{task.id}}">Update</a>
+				<a href="/admin/edit/{{question.id}}">Update</a>
 			</td>
 		</tr>
 		{% endfor %}
