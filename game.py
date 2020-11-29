@@ -19,7 +19,7 @@ class Todo(db.Model):
     date_created = db.Column(db.DateTime, default=datetime.utcnow)
 
 
-class Admin(db, Model):
+class Admin(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     fname = db.Column(db.String(100), nullable=False)
     sname = db.Column(db.String(100), nullable=False)
