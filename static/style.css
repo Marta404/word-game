@@ -275,6 +275,9 @@ span.small {
 	border-bottom: 1px white solid;
 	box-sizing: border-box;
 }
+.qtable table .cellweek{
+	width: 10%;
+}
 
 /*rows and columns*/
 .col-10 {
