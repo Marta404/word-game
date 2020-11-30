@@ -1,7 +1,7 @@
 //var phaslo = new Array()
 //var pquestion = new Array()
-// var phaslo = '';
-// var pquestion = '';
+var phaslo = 'haslo';
+var pquestion = 'pytanie';
 
 var request = new XMLHttpRequest(),
 	method = 'GET',
