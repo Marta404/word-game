@@ -30,7 +30,7 @@ async function getQapi() {
 	console.log(data.questions.length);
 
 	if (data.questions.week = 2) {
-		phaslo = "data.questions.answer";
+		phaslo = data.questions.answer;
 	}
 	console.log(phaslo);
 }
