@@ -8,11 +8,12 @@ var pquestion = 'pytanie';
 //console.log(phaslo)
 var new_haslo = phaslo;
 var new_question = pquestion;
-console.log(new_haslo);
-console.log(new_question);
-//console.log(pquestion[4])
-var numer = Math.floor(Math.random() * phaslo.length) - 1;
-numer++; if (numer > phaslo.length) numer = 0;
+// console.log(new_haslo);
+// console.log(new_question);
+// //console.log(pquestion[4])
+
+// var numer = Math.floor(Math.random() * phaslo.length) - 1;
+// numer++; if (numer > phaslo.length) numer = 0;
 
 //var password = phaslo[numer].answer;
 //var question1 = phaslo[numer].question;
