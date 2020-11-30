@@ -23,7 +23,7 @@ request.onload = function () {
 }
 request.send();
 console.log(phaslo)
-console.log(phaslo[0])
+console.log(phaslo[1])
 var numer = Math.floor(Math.random() * phaslo.length) - 1;
 numer++; if (numer > phaslo.length) numer = 0;
 
