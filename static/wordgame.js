@@ -1,5 +1,5 @@
-//var phaslo = new Array()
-//var pquestion = new Array()
+//var phaslo = new Array();
+//var pquestion = new Array();
 //var phaslo = 'haslo';
 //var pquestion = 'pytanie';
 
@@ -17,8 +17,8 @@ request.onload = function () {
 
 		var phaslo = data.questions[numer].answer;
 		var pquestion = data.questions[numer].question;
-		console.log(phaslo)
-		console.log(pquestion)
+		console.log(phaslo);
+		console.log(pquestion);
 		// for (var i = 0; i < data.questions.length; i++) {
 		// 	var row = data.questions[i];
 		// 	//phaslo.push(row);
@@ -35,8 +35,8 @@ request.send();
 //console.log(phaslo)
 var new_haslo = phaslo;
 var new_question = pquestion;
-console.log(new_haslo)
-console.log(new_question)
+console.log(new_haslo);
+console.log(new_question);
 //console.log(pquestion[4])
 var numer = Math.floor(Math.random() * phaslo.length) - 1;
 numer++; if (numer > phaslo.length) numer = 0;
