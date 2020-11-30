@@ -4,7 +4,7 @@ var question1 = "question will be here ... lorem ipsum quest";
 
 var haslo = "";
 
-//numer++; if (numer > 3) numer = 0;
+numer++; if (numer > 3) numer = 0;
 
 
 // var phaslo = new Array(6) //nowa tablica, w nawiasach jest jej rozmiar - ilosc zarezerwowanych szufladek
@@ -28,8 +28,6 @@ async function getQapi() {
 	const data = await response.json();
 	console.log(data);
 	console.log(data.questions.length);
-	console.log(phaslo[numer]);
-
 
 	for (i = 0; i < data.questions.length; i++) {
 		var phaslo = new Array(i)
@@ -37,12 +35,13 @@ async function getQapi() {
 			phaslo[i] = "data.questions.answer";
 		}
 	}
-
+	console.log(phaslo[numer]);
 }
 getQapi();
 //document.getElementById("question").innerHTML = question11;
-numer++; if (numer > 3) numer = 0;
 var password = phaslo[numer];
+//var password = phaslo[numer];
+
 //set up match.random
 //put the answer into variable 'password'
 
