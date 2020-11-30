@@ -47,7 +47,7 @@ async function getQapi() {
 	var password = phaslo[numer];
 	/////////////////////////////////////////////////////////
 	//var password = "example answer";
-	password = password.toUpperCase();
+	var password = password.toUpperCase();
 
 	var lenght = password.length;
 	var errors_number = 0;
