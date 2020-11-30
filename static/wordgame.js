@@ -35,7 +35,7 @@ async function getQapi() {
 			phaslo[i] = "data.questions.answer";
 		}
 	}
-	console.log(phaslo[numer]);
+	console.log(phaslo[i]);
 }
 getQapi();
 //document.getElementById("question").innerHTML = question11;
