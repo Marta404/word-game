@@ -1,7 +1,7 @@
 //var phaslo = new Array();
 //var pquestion = new Array();
 var phaslo = 'haslo';
-var pquestion = 'pytanie';
+//var pquestion = 'pytanie';
 
 //*** */
 
@@ -12,7 +12,7 @@ async = true;
 request.open(method, url, async);
 request.onload = function () {
 	var data = JSON.parse(this.response);
-	console.log(data.questions.length + ' nowe');
+	console.log(data.questions.length + ' - number of all questions');
 	if (request.status >= 200 && request.status < 400) {
 		var numer = Math.floor(Math.random() * data.questions.length) - 1;
 		numer++; if (numer > data.questions.length) numer = 0;
