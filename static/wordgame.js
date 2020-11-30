@@ -28,6 +28,7 @@ request.send();
 //console.log(phaslo)
 console.log(phaslo)
 console.log(pquestion)
+console.log(pquestion[4])
 var numer = Math.floor(Math.random() * phaslo.length) - 1;
 numer++; if (numer > phaslo.length) numer = 0;
 
