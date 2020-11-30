@@ -3,35 +3,8 @@
 var phaslo = 'haslo';
 var pquestion = 'pytanie';
 
-var request = new XMLHttpRequest(),
-	method = 'GET',
-	url = 'http://192.168.0.5:5000/api/'
-async = true;
-request.open(method, url, async);
-request.onload = function () {
-	var data = JSON.parse(this.response);
-	console.log(data.questions.length + ' nowe');
-	if (request.status >= 200 && request.status < 400) {
-		var numer = Math.floor(Math.random() * data.questions.length) - 1;
-		numer++; if (numer > data.questions.length) numer = 0;
+//*** */
 
-		phaslo = data.questions[numer].answer;
-		pquestion = data.questions[numer].question;
-		console.log(phaslo);
-		console.log(pquestion);
-		// for (var i = 0; i < data.questions.length; i++) {
-		// 	var row = data.questions[i];
-		// 	//phaslo.push(row);
-		// 	phaslo.push(row.answer);
-		// 	pquestion.push(row.question);
-		// 	// console.log(row.question + ' ' + row.answer + ' ' + row.week);
-		// 	// console.log(phaslo[i].question)
-		// }
-	} else {
-		console.log('error');
-	}
-}
-request.send();
 //console.log(phaslo)
 var new_haslo = phaslo;
 var new_question = pquestion;
@@ -176,3 +149,33 @@ function sprawdz(nr) {
 	if (errors_number >= 9)
 		document.getElementById("alfabet").innerHTML = "Game Over! Correct answer is: <br/>" + password + '<br /><br /><span class="reset" onclick="location.reload()">Next Question</span>';
 }
+
+var request = new XMLHttpRequest(),
+	method = 'GET',
+	url = 'http://192.168.0.5:5000/api/'
+async = true;
+request.open(method, url, async);
+request.onload = function () {
+	var data = JSON.parse(this.response);
+	console.log(data.questions.length + ' nowe');
+	if (request.status >= 200 && request.status < 400) {
+		var numer = Math.floor(Math.random() * data.questions.length) - 1;
+		numer++; if (numer > data.questions.length) numer = 0;
+
+		phaslo = data.questions[numer].answer;
+		pquestion = data.questions[numer].question;
+		console.log(phaslo);
+		console.log(pquestion);
+		// for (var i = 0; i < data.questions.length; i++) {
+		// 	var row = data.questions[i];
+		// 	//phaslo.push(row);
+		// 	phaslo.push(row.answer);
+		// 	pquestion.push(row.question);
+		// 	// console.log(row.question + ' ' + row.answer + ' ' + row.week);
+		// 	// console.log(phaslo[i].question)
+		// }
+	} else {
+		console.log('error');
+	}
+}
+request.send();
