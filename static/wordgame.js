@@ -41,13 +41,12 @@ request.send();
 
 //to tez test
 setTimeout(console.log(pquestion), 500);
-console.log(pquestion);
 //////************************************* */
 
 
 //console.log(phaslo)
 var new_haslo = phaslo;
-var new_question = pquestion;
+var new_question = setTimeout(pquestion, 500);
 // console.log(new_haslo);
 console.log(new_question + ' - new_question');
 // //console.log(pquestion[4])
