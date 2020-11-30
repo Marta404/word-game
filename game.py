@@ -35,7 +35,7 @@ class Admin(db.Model):
         return '<Question %r>' % self.id
 
 
-class QuestionSchema(ma.ModelSchema):
+class QuestionSchema(ma.SQLAlchemyAutoSchema):
     class Meta:
         model = Todo
 
