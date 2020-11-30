@@ -1,6 +1,6 @@
 //var phaslo = new Array();
 //var pquestion = new Array();
-var phaslo = xyz();
+var phaslo = xyz(phaslo);
 var pquestion = 'pytanie';
 
 //*** */
