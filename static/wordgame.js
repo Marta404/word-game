@@ -1,36 +1,42 @@
-var numer = Math.floor(Math.random() * 5) + 1;
+var phaslo = new Array()
 
-var question1 = "question will be here ... lorem ipsum quest";
+var request = new XMLHttpRequest(),
+	method = 'GET',
+	url = 'http://192.168.0.5:5000/api/'
+async = true;
+request.open(method, url, async);
+request.onload = function () {
+	var data = JSON.parse(this.response);
+	console.log(data.questions.length + ' nowe');
+	if (request.status >= 200 && request.status < 400) {
 
-var haslo = "";
 
-numer++; if (numer > 5) numer = 0;
+		for (var i = 0; i < data.questions.length; i++) {
+			var row = data.questions[i];
+			phaslo.push(row);
+			console.log(row.question + ' ' + row.answer + ' ' + row.week);
+			console.log(phaslo[i].question)
+		}
+	} else {
+		console.log('error');
+	}
+}
+request.send();
 
+var numer = Math.floor(Math.random() * data.questions.length) - 1;
+numer++; if (numer > data.questions.length) numer = 0;
 
-var phaslo = new Array(6) //nowa tablica, w nawiasach jest jej rozmiar - ilosc zarezerwowanych szufladek
-
-phaslo[0] = "haslo 1";
-phaslo[1] = "haslo 22";
-phaslo[2] = "haslo 333";
-phaslo[3] = "Bez pracy nie ma kołaczy";
-phaslo[4] = "Stol z powylamywanymi nogami";
-phaslo[5] = "Baba z wozu koniom lzej";
-
-var password = phaslo[numer];
+var password = phaslo[numer].answer;
+var question1 = phaslo[numer].question;
 /////////////////////////////////////////////////////////
 
-//get questions and answers from database
-//set up match.random
-//put the answer into variable 'password'
-
-//var password = "example answer";
 password = password.toUpperCase();
 
 var lenght = password.length;
 var errors_number = 0;
 
-var yes = new Audio("yes.wav");
-var no = new Audio("no.wav");
+// var yes = new Audio("yes.wav");
+// var no = new Audio("no.wav");
 
 var password1 = "";
 
