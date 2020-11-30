@@ -22,7 +22,7 @@ async = true;
 request.open(method, url, async);
 request.onload = function () {
 	var data = JSON.parse(this.response);
-	console.log(data + ' nowe');
+	console.log(data.questions + ' nowe');
 	console.log(data.questions.length + ' nowe');
 	if (request.status >= 200 && request.status < 400) {
 
