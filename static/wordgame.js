@@ -1,4 +1,5 @@
 var phaslo = new Array()
+var pquestion = new Array()
 
 var request = new XMLHttpRequest(),
 	method = 'GET',
@@ -13,7 +14,9 @@ request.onload = function () {
 
 		for (var i = 0; i < data.questions.length; i++) {
 			var row = data.questions[i];
-			phaslo.push(row);
+			//phaslo.push(row);
+			phaslo.push(row.answer);
+			pquestion.push(row.question);
 			// console.log(row.question + ' ' + row.answer + ' ' + row.week);
 			// console.log(phaslo[i].question)
 		}
@@ -22,8 +25,9 @@ request.onload = function () {
 	}
 }
 request.send();
-console.log(phaslo)
-console.log(phaslo["answer"])
+//console.log(phaslo)
+console.log(phaslo[2])
+console.log(pquestion[2])
 var numer = Math.floor(Math.random() * phaslo.length) - 1;
 numer++; if (numer > phaslo.length) numer = 0;
 
