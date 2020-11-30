@@ -14,15 +14,15 @@ request.onload = function () {
 		for (var i = 0; i < data.questions.length; i++) {
 			var row = data.questions[i];
 			phaslo.push(row);
-			console.log(row.question + ' ' + row.answer + ' ' + row.week);
-			console.log(phaslo[i].question)
+			// console.log(row.question + ' ' + row.answer + ' ' + row.week);
+			// console.log(phaslo[i].question)
 		}
 	} else {
 		console.log('error');
 	}
 }
 request.send();
-console.log(phaslo[0])
+console.log(phaslo)
 var numer = Math.floor(Math.random() * phaslo.length) - 1;
 numer++; if (numer > phaslo.length) numer = 0;
 
