@@ -1,8 +1,8 @@
 //var phaslo = new Array();
 //var pquestion = new Array();
-var phaslo = xyz(phaslo);
+var phaslo = 'haslo';
 var pquestion = 'pytanie';
-
+var xyz = xyz();
 //*** */
 function xyz() {
 
@@ -42,6 +42,7 @@ function xyz() {
 	request.send();
 }
 //*** */
+xyz();
 
 //console.log(phaslo)
 var new_haslo = phaslo;
