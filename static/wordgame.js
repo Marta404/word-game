@@ -22,7 +22,7 @@ request.onload = function () {
 		console.log(phaslo);
 		console.log(pquestion);
 		// inna proba
-		setTimeout(console.log(pquestion), 400);
+		setTimeout(console.log(pquestion + ' - to setout inside'), 400);
 
 
 		// for (var i = 0; i < data.questions.length; i++) {
