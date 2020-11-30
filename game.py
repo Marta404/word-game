@@ -52,7 +52,7 @@ def api():
     #questions = Todo.query.all()
     question_schema = QuestionSchema(many=True)
     output = question_schema.dump(questions)
-    return jsonify({'question': output})
+    return jsonify({'questions': output})
 
 
 @app.route('/admin/', methods=['POST', 'GET'])
