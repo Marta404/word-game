@@ -29,10 +29,10 @@ request.onload = function () {
 
 		for (var i = 0; i < data.questions.length; i++) {
 			var row = data.questions[i];
-			phaslo.push(row);
-			console.log(phaslo);
-		}
+			//phaslo.push(row);
 
+		}
+		console.log(row);
 		// 	} else {
 		// 		console.log('error');
 		// 	}
