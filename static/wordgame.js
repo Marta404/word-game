@@ -1,5 +1,7 @@
-var phaslo = new Array()
-var pquestion = new Array()
+//var phaslo = new Array()
+//var pquestion = new Array()
+var phaslo = '';
+var pquestion = '';
 
 var request = new XMLHttpRequest(),
 	method = 'GET',
@@ -10,7 +12,11 @@ request.onload = function () {
 	var data = JSON.parse(this.response);
 	console.log(data.questions.length + ' nowe');
 	if (request.status >= 200 && request.status < 400) {
+		var numer = Math.floor(Math.random() * data.questions.length) - 1;
+		numer++; if (numer > data.questions.length) numer = 0;
 
+		phaslo = data.questions[numer].answer;
+		pquestion = data.questions[numer].question;
 
 		for (var i = 0; i < data.questions.length; i++) {
 			var row = data.questions[i];
@@ -28,12 +34,14 @@ request.send();
 //console.log(phaslo)
 console.log(phaslo)
 console.log(pquestion)
-console.log(pquestion[4])
+//console.log(pquestion[4])
 var numer = Math.floor(Math.random() * phaslo.length) - 1;
 numer++; if (numer > phaslo.length) numer = 0;
 
-var password = phaslo[numer].answer;
-var question1 = phaslo[numer].question;
+//var password = phaslo[numer].answer;
+//var question1 = phaslo[numer].question;
+var password = phaslo
+var question1 = pquestion
 /////////////////////////////////////////////////////////
 
 password = password.toUpperCase();
