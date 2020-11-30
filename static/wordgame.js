@@ -26,7 +26,7 @@ console.log(phaslo)
 var numer = Math.floor(Math.random() * phaslo.length) - 1;
 numer++; if (numer > phaslo.length) numer = 0;
 
-var password = phaslo[numer][0];
+var password = phaslo[numer]['answer'];
 var question1 = phaslo[numer][3];
 /////////////////////////////////////////////////////////
 
