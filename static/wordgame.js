@@ -28,11 +28,10 @@ async function getQapi() {
 	const data = await response.json();
 	console.log(data);
 	console.log(data.questions.length);
-
-	if (data.questions.week = 2) {
-		phaslo = data.questions.answer;
-	}
-	console.log(phaslo);
+	console.log(data.questions.answer);
+	const { answer, question } = data;
+	console.log(answer);
+	console.log(question);
 }
 getQapi();
 //document.getElementById("question").innerHTML = question11;
