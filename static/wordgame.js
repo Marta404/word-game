@@ -45,7 +45,8 @@ request.send();
 
 //console.log(phaslo)
 var new_haslo = phaslo;
-var new_question = setTimeout(data, 400);
+var new_question = setTimeout(pquestion, 500);
+setTimeout(console.log(pquestion + ' - to setout outside'), 400);
 // console.log(new_haslo);
 console.log(new_question + ' - new_question');
 // //console.log(pquestion[4])
