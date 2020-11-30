@@ -1,3 +1,38 @@
+/////get questions and answers from database
+const api_url = 'http://192.168.0.5:5000/api/';
+async function getQapi() {
+	const response = await fetch(api_url);
+	const data = await response.json();
+	console.log(data);
+	console.log(data.questions.length);
+
+	for (var i = 0; i < data.questions.length; i++) {
+		var question = data.questions[i];
+		console.log(question);
+		var phaslo = new Array(i)
+		phaslo[i] = data.questions[i].answer;
+	}
+}
+getQapi();
+/////////////////////////////////////////////////////////////
+var request = new XMLHttpRequest(),
+	method = 'GET',
+	url = 'http://192.168.0.5:5000/api/'
+async = true;
+request.open(method, url, async);
+request.onload = function () {
+	var data = JSON.parse(this.response);
+	console.log(data + ' nowe');
+	console.log(data.questions.length + ' nowe');
+	if (request.status >= 200 && request.status < 400) {
+
+		for (var i = 0; i < data.questions.length; i++) {
+			var row = data.questions[i];
+			console.log(row.question + ' ' + row.answer + ' ' + row.week);
+		}
+	}
+}
+/////////////////////////////////////////////////////////////
 var numer = Math.floor(Math.random() * 5) + 1;
 
 var question1 = "question will be here ... lorem ipsum quest";
@@ -18,24 +53,6 @@ phaslo[5] = "Baba z wozu koniom lzej";
 var password = phaslo[numer];
 
 /////////////////////////////////////////////////////////
-
-//get questions and answers from database
-const api_url = 'http://192.168.0.5:5000/api/';
-async function getQapi() {
-	const response = await fetch(api_url);
-	const data = await response.json();
-	console.log(data);
-	console.log(data.questions.length);
-
-	for (var i = 0; i < data.questions.length; i++) {
-		var question = data.questions[i];
-		console.log(question);
-		var phaslo = new Array(i)
-		phaslo[i] = data.questions[i].answer;
-	}
-}
-getQapi();
-
 
 //document.getElementById("question").innerHTML = question11;
 //set up match.random
