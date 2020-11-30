@@ -1,19 +1,19 @@
 /////get questions and answers from database
-const api_url = 'http://192.168.0.5:5000/api/';
-async function getQapi() {
-	const response = await fetch(api_url);
-	const data = await response.json();
-	console.log(data);
-	console.log(data.questions.length);
+// const api_url = 'http://192.168.0.5:5000/api/';
+// async function getQapi() {
+// 	const response = await fetch(api_url);
+// 	const data = await response.json();
+// 	console.log(data);
+// 	console.log(data.questions.length);
 
-	for (var i = 0; i < data.questions.length; i++) {
-		var question = data.questions[i];
-		console.log(question);
-		var phaslo = new Array(i)
-		phaslo[i] = data.questions[i].answer;
-	}
-}
-getQapi();
+// 	for (var i = 0; i < data.questions.length; i++) {
+// 		var question = data.questions[i];
+// 		console.log(question);
+// 		var phaslo = new Array(i)
+// 		phaslo[i] = data.questions[i].answer;
+// 	}
+// }
+// getQapi();
 /////////////////////////////////////////////////////////////
 var request = new XMLHttpRequest(),
 	method = 'GET',
