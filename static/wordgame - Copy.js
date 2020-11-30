@@ -1,3 +1,20 @@
+/////get questions and answers from database
+// const api_url = 'http://192.168.0.5:5000/api/';
+// async function getQapi() {
+// 	const response = await fetch(api_url);
+// 	const data = await response.json();
+// 	console.log(data);
+// 	console.log(data.questions.length);
+
+// 	for (var i = 0; i < data.questions.length; i++) {
+// 		var question = data.questions[i];
+// 		console.log(question);
+// 		var phaslo = new Array(i)
+// 		phaslo[i] = data.questions[i].answer;
+// 	}
+// }
+// getQapi();
+/////////////////////////////////////////////////////////////
 var request = new XMLHttpRequest(),
 	method = 'GET',
 	url = 'http://192.168.0.5:5000/api/'
@@ -8,34 +25,26 @@ request.onload = function () {
 	console.log(data.questions.length + ' nowe');
 	if (request.status >= 200 && request.status < 400) {
 
+		var phaslo = new Array()
+
 		for (var i = 0; i < data.questions.length; i++) {
 			var row = data.questions[i];
+			phaslo.push(row);
 			console.log(row.question + ' ' + row.answer + ' ' + row.week);
+			console.log(phaslo[i].question)
 		}
-
+		//console.log(phaslo);
 		// 	} else {
 		// 		console.log('error');
 		// 	}
 		// }
 		// request.send();
 		/////////////////////////////////////////////////////////////
-		var numer = Math.floor(Math.random() * 5) + 1;
+		var numer = Math.floor(Math.random() * data.questions.length) - 1;
+		numer++; if (numer > data.questions.length) numer = 0;
 
-		var question1 = "question will be here ... lorem ipsum quest";
-
-		numer++; if (numer > 5) numer = 0;
-
-		var phaslo = new Array(6) //nowa tablica, w nawiasach jest jej rozmiar - ilosc zarezerwowanych szufladek
-
-		phaslo[0] = "haslo 1";
-		phaslo[1] = "haslo 22";
-		phaslo[2] = "haslo 333";
-		phaslo[3] = "Bez pracy nie ma kolaczy";
-		phaslo[4] = "Stol z powylamywanymi nogami";
-		phaslo[5] = "Baba z wozu koniom lzej";
-
-		var password = phaslo[numer];
-
+		var password = phaslo[numer].answer;
+		var question1 = phaslo[numer].question;
 		/////////////////////////////////////////////////////////
 
 		//document.getElementById("question").innerHTML = question11;
@@ -49,8 +58,8 @@ request.onload = function () {
 		var lenght = password.length;
 		var errors_number = 0;
 		// add sound
-		var yes = new Audio("yes.wav");
-		var no = new Audio("no.wav");
+		// var yes = new Audio("yes.wav");
+		// var no = new Audio("no.wav");
 
 		var password1 = "";
 
@@ -141,7 +150,7 @@ request.onload = function () {
 			}
 
 			if (trafiona == true) {
-				yes.play();
+				// yes.play();
 				var element = "lit" + nr;
 				document.getElementById(element).style.background = "#f8f9fa";
 				document.getElementById(element).style.color = "#ef920c";
@@ -151,7 +160,7 @@ request.onload = function () {
 				write_password();
 			}
 			else {
-				no.play();
+				// no.play();
 				var element = "lit" + nr;
 				document.getElementById(element).style.background = "#cccccc";
 				document.getElementById(element).style.color = "#fff";
