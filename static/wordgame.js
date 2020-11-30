@@ -17,15 +17,16 @@ request.onload = function () {
 
 		phaslo = data.questions[numer].answer;
 		pquestion = data.questions[numer].question;
-
-		for (var i = 0; i < data.questions.length; i++) {
-			var row = data.questions[i];
-			//phaslo.push(row);
-			phaslo.push(row.answer);
-			pquestion.push(row.question);
-			// console.log(row.question + ' ' + row.answer + ' ' + row.week);
-			// console.log(phaslo[i].question)
-		}
+		console.log(phaslo)
+		console.log(pquestion)
+		// for (var i = 0; i < data.questions.length; i++) {
+		// 	var row = data.questions[i];
+		// 	//phaslo.push(row);
+		// 	phaslo.push(row.answer);
+		// 	pquestion.push(row.question);
+		// 	// console.log(row.question + ' ' + row.answer + ' ' + row.week);
+		// 	// console.log(phaslo[i].question)
+		// }
 	} else {
 		console.log('error');
 	}
