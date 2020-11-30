@@ -51,7 +51,7 @@ def api():
     questions = Todo.query.order_by(Todo.week).all()
     #questions = Todo.query.all()
     question_schema = QuestionSchema(many=True)
-    output = question_schema.dump(questions).data
+    output = question_schema.dump(questions)
     return jsonify({'question': output})
 
 
