@@ -167,6 +167,10 @@ request.onload = function () {
 		pquestion = data.questions[numer].question;
 		console.log(phaslo);
 		console.log(pquestion);
+		//proba convert into global variable
+		window.phaslo = phaslo;
+		window.pquestion = pquestion;
+
 		// for (var i = 0; i < data.questions.length; i++) {
 		// 	var row = data.questions[i];
 		// 	//phaslo.push(row);
@@ -180,3 +184,6 @@ request.onload = function () {
 	}
 }
 request.send();
+//to tez test
+setTimeout(console.log(pquestion), 500);
+setTimeout(pquestion, 500);
