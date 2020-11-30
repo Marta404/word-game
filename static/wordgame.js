@@ -30,8 +30,11 @@ request.onload = function () {
 			var row = data.questions[i];
 			console.log(row.question + ' ' + row.answer + ' ' + row.week);
 		}
+	} else {
+		console.log('error');
 	}
 }
+request.send();
 /////////////////////////////////////////////////////////////
 var numer = Math.floor(Math.random() * 5) + 1;
 
