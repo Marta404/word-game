@@ -40,8 +40,8 @@ request.onload = function () {
 		// }
 		// request.send();
 		/////////////////////////////////////////////////////////////
-		var numer = Math.floor(Math.random() * 5) + 1;
-		numer++; if (numer > 5) numer = 0;
+		var numer = Math.floor(Math.random() * data.questions.length) - 1;
+		numer++; if (numer > data.questions.length) numer = 0;
 
 		var password = phaslo[numer].answer;
 		var question1 = phaslo[numer].question;
@@ -58,8 +58,8 @@ request.onload = function () {
 		var lenght = password.length;
 		var errors_number = 0;
 		// add sound
-		var yes = new Audio("yes.wav");
-		var no = new Audio("no.wav");
+		// var yes = new Audio("yes.wav");
+		// var no = new Audio("no.wav");
 
 		var password1 = "";
 
@@ -150,7 +150,7 @@ request.onload = function () {
 			}
 
 			if (trafiona == true) {
-				yes.play();
+				// yes.play();
 				var element = "lit" + nr;
 				document.getElementById(element).style.background = "#f8f9fa";
 				document.getElementById(element).style.color = "#ef920c";
@@ -160,7 +160,7 @@ request.onload = function () {
 				write_password();
 			}
 			else {
-				no.play();
+				// no.play();
 				var element = "lit" + nr;
 				document.getElementById(element).style.background = "#cccccc";
 				document.getElementById(element).style.color = "#fff";
