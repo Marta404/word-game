@@ -1,7 +1,7 @@
 //var phaslo = new Array();
 //var pquestion = new Array();
 var phaslo = 'haslo';
-//var pquestion = 'pytanie';
+var pquestion = 'pytanie';
 
 //*** */
 
@@ -39,12 +39,17 @@ request.onload = function () {
 }
 request.send();
 
+//to tez test
+setTimeout(console.log(pquestion), 500);
+console.log(pquestion);
+//////************************************* */
+
 
 //console.log(phaslo)
 var new_haslo = phaslo;
 var new_question = pquestion;
 // console.log(new_haslo);
-// console.log(new_question);
+console.log(new_question + ' - new_question');
 // //console.log(pquestion[4])
 
 // var numer = Math.floor(Math.random() * phaslo.length) - 1;
@@ -52,8 +57,8 @@ var new_question = pquestion;
 
 //var password = phaslo[numer].answer;
 //var question1 = phaslo[numer].question;
-var password = phaslo
-var question1 = pquestion
+var password = phaslo;
+var question1 = pquestion;
 /////////////////////////////////////////////////////////
 
 password = password.toUpperCase();
@@ -187,7 +192,5 @@ function sprawdz(nr) {
 }
 
 
-//to tez test
-setTimeout(console.log(pquestion), 500);
-console.log(pquestion);
+
 
