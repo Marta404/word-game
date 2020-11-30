@@ -29,13 +29,10 @@ async function getQapi() {
 	console.log(data);
 	console.log(data.questions.length);
 
-	var phaslo = new Array(i)
-	for (i = 0; i < data.questions.length; i++) {
-		if (data.questions.week = 2) {
-			phaslo[i] = "data.questions.answer";
-		}
+	if (data.questions.week = 2) {
+		phaslo = "data.questions.answer";
 	}
-	console.log(phaslo[i]);
+	console.log(phaslo);
 }
 getQapi();
 //document.getElementById("question").innerHTML = question11;
