@@ -29,8 +29,8 @@ async function getQapi() {
 	console.log(data);
 	console.log(data.questions.length);
 
+	var phaslo = new Array(i)
 	for (i = 0; i < data.questions.length; i++) {
-		var phaslo = new Array(i)
 		if (data.questions.week = 2) {
 			phaslo[i] = "data.questions.answer";
 		}
