@@ -21,9 +21,9 @@ request.onload = function () {
 		pquestion = data.questions[numer].question;
 		console.log(phaslo);
 		console.log(pquestion);
-		//proba convert into global variable
-		window.phaslo = phaslo;
-		window.pquestion = pquestion;
+		// inna proba
+		setTimeout(console.log(pquestion), 400);
+
 
 		// for (var i = 0; i < data.questions.length; i++) {
 		// 	var row = data.questions[i];
