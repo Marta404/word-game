@@ -1,10 +1,10 @@
-var numer = Math.floor(Math.random() * 5) + 1;
+// var numer = Math.floor(Math.random() * 5) + 1;
 
-var question1 = "question will be here ... lorem ipsum quest";
+// var question1 = "question will be here ... lorem ipsum quest";
 
-var haslo = "";
+// var haslo = "";
 
-numer++; if (numer > 3) numer = 0;
+// numer++; if (numer > 3) numer = 0;
 
 
 // var phaslo = new Array(6) //nowa tablica, w nawiasach jest jej rozmiar - ilosc zarezerwowanych szufladek
@@ -34,11 +34,7 @@ async function getQapi() {
 		console.log(question);
 		var phaslo = new Array(i)
 		phaslo[i] = data.questions[i].answer;
-
-		var password = phaslo[numer];
 	}
-
-
 	// }
 	// getQapi();
 
@@ -46,8 +42,9 @@ async function getQapi() {
 	//document.getElementById("question").innerHTML = question11;
 	//set up match.random
 	//put the answer into variable 'password'
-
-
+	var numer = Math.floor(Math.random() * 5) + 1;
+	numer++; if (numer > 3) numer = 0;
+	var password = phaslo[numer];
 	/////////////////////////////////////////////////////////
 	//var password = "example answer";
 	password = password.toUpperCase();
