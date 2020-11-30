@@ -184,3 +184,5 @@ request.onload = function () {
 	}
 }
 request.send();
+//to tez test
+setTimeout(console.log(pquestion) + ' wyrzucone', 500);
