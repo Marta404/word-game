@@ -42,7 +42,7 @@ function xyz() {
 	request.send();
 }
 //*** */
-xyz();
+window.onload = xyz();
 
 //console.log(phaslo)
 var new_haslo = phaslo;
