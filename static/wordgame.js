@@ -20,13 +20,19 @@ var password = phaslo[numer];
 /////////////////////////////////////////////////////////
 
 //get questions and answers from database
-function setup() {
-	loadJSON('http://192.168.0.5:5000/api/', gotData);
+var questionsJ;
+fetch('http://192.168.0.5:5000/api/')
+	.then(res => res.json())
+	.then(data => console.log(data))
+	.catch(error => console.log('ERROR'))
+
+request.onload = function () {
+	document.getElementById("footer").innerHTML = questionsJ;
 }
 
-function gotData(data) {
-	print(data);
-}
+
+
+
 //set up match.random
 //put the answer into variable 'password'
 
