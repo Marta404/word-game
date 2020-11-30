@@ -15,8 +15,8 @@ request.onload = function () {
 		var numer = Math.floor(Math.random() * data.questions.length) - 1;
 		numer++; if (numer > data.questions.length) numer = 0;
 
-		phaslo = data.questions[numer].answer;
-		pquestion = data.questions[numer].question;
+		var phaslo = data.questions[numer].answer;
+		var pquestion = data.questions[numer].question;
 		console.log(phaslo)
 		console.log(pquestion)
 		// for (var i = 0; i < data.questions.length; i++) {
@@ -33,8 +33,10 @@ request.onload = function () {
 }
 request.send();
 //console.log(phaslo)
-console.log(phaslo)
-console.log(pquestion)
+var new_haslo = phaslo;
+var new_question = pquestion;
+console.log(new_haslo)
+console.log(new_question)
 //console.log(pquestion[4])
 var numer = Math.floor(Math.random() * phaslo.length) - 1;
 numer++; if (numer > phaslo.length) numer = 0;
