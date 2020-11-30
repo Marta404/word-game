@@ -30,9 +30,10 @@ request.onload = function () {
 		for (var i = 0; i < data.questions.length; i++) {
 			var row = data.questions[i];
 			phaslo.push(row);
-
+			console.log(row.question + ' ' + row.answer + ' ' + row.week);
+			console.log(phaslo[i].question)
 		}
-		console.log(phaslo);
+		//console.log(phaslo);
 		// 	} else {
 		// 		console.log('error');
 		// 	}
@@ -42,8 +43,8 @@ request.onload = function () {
 		var numer = Math.floor(Math.random() * 5) + 1;
 		numer++; if (numer > 5) numer = 0;
 
-		var password = phaslo[numer].row.answer;
-		var question1 = phaslo[numer].row.question;
+		var password = phaslo[numer].answer;
+		var question1 = phaslo[numer].question;
 		/////////////////////////////////////////////////////////
 
 		//document.getElementById("question").innerHTML = question11;
