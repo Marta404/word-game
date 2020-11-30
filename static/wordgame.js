@@ -20,18 +20,13 @@ var password = phaslo[numer];
 /////////////////////////////////////////////////////////
 
 //get questions and answers from database
-var questionsJ;
-fetch('http://192.168.0.5:5000/api/')
-	.then(res => res.json())
-	.then(data => console.log(data))
-	.catch(error => console.log('ERROR'))
-
-request.onload = function () {
-	document.getElementById("footer").innerHTML = questionsJ;
+const api_url = 'http://192.168.0.5:5000/api/';
+async function getQapi() {
+	const response = await fetch(api_url);
+	const data = await response.json();
+	console.log(data);
 }
-
-
-
+getQapi();
 
 //set up match.random
 //put the answer into variable 'password'
