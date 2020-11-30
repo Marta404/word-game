@@ -7,16 +7,18 @@ var haslo = "";
 numer++; if (numer > 5) numer = 0;
 
 
-var phaslo = new Array(6) //nowa tablica, w nawiasach jest jej rozmiar - ilosc zarezerwowanych szufladek
+// var phaslo = new Array(6) //nowa tablica, w nawiasach jest jej rozmiar - ilosc zarezerwowanych szufladek
 
-phaslo[0] = "haslo 1";
-phaslo[1] = "haslo 22";
-phaslo[2] = "haslo 333";
-phaslo[3] = "Bez pracy nie ma kolaczy";
-phaslo[4] = "Stol z powylamywanymi nogami";
-phaslo[5] = "Baba z wozu koniom lzej";
+// phaslo[0] = "haslo 1";
+// phaslo[1] = "haslo 22";
+// phaslo[2] = "haslo 333";
+// phaslo[3] = "Bez pracy nie ma kolaczy";
+// phaslo[4] = "Stol z powylamywanymi nogami";
+// phaslo[5] = "Baba z wozu koniom lzej";
 
-var password = phaslo[numer];
+// var password = phaslo[numer];
+
+
 /////////////////////////////////////////////////////////
 
 //get questions and answers from database
@@ -25,9 +27,20 @@ async function getQapi() {
 	const response = await fetch(api_url);
 	const data = await response.json();
 	console.log(data);
+	console.log(data.questions.length);
+
+
+	for (i = 0; i < data.questions.length; i++) {
+		var phaslo = new Array(6)
+		if (data.questions.week = 2) {
+			phaslo[i] = "data.questions.answer";
+		}
+	}
+
 }
 getQapi();
-
+//document.getElementById("question").innerHTML = question11;
+var password = phaslo[numer];
 //set up match.random
 //put the answer into variable 'password'
 
