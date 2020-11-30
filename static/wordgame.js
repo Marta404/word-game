@@ -6,16 +6,16 @@ var haslo = "";
 
 numer++; if (numer > 3) numer = 0;
 
-// var phaslo = new Array(6) //nowa tablica, w nawiasach jest jej rozmiar - ilosc zarezerwowanych szufladek
+var phaslo = new Array(6) //nowa tablica, w nawiasach jest jej rozmiar - ilosc zarezerwowanych szufladek
 
-// phaslo[0] = "haslo 1";
-// phaslo[1] = "haslo 22";
-// phaslo[2] = "haslo 333";
-// phaslo[3] = "Bez pracy nie ma kolaczy";
-// phaslo[4] = "Stol z powylamywanymi nogami";
-// phaslo[5] = "Baba z wozu koniom lzej";
+phaslo[0] = "haslo 1";
+phaslo[1] = "haslo 22";
+phaslo[2] = "haslo 333";
+phaslo[3] = "Bez pracy nie ma kolaczy";
+phaslo[4] = "Stol z powylamywanymi nogami";
+phaslo[5] = "Baba z wozu koniom lzej";
 
-// var password = phaslo[numer];
+var password = phaslo[numer];
 
 /////////////////////////////////////////////////////////
 
