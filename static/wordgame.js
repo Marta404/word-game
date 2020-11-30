@@ -34,9 +34,11 @@ async function getQapi() {
 		console.log(question);
 		var phaslo = new Array(i)
 		phaslo[i] = data.questions[i].answer;
+
+		var password = phaslo[numer];
 	}
 
-	var password = phaslo[numer];
+
 	// }
 	// getQapi();
 
@@ -47,8 +49,8 @@ async function getQapi() {
 
 
 	/////////////////////////////////////////////////////////
-	/////var password = "example answer";
-	//***to oryginalnie bylo* password = password.toUpperCase();
+	//var password = "example answer";
+	password = password.toUpperCase();
 
 	var lenght = password.length;
 	var errors_number = 0;
