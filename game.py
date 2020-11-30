@@ -48,7 +48,8 @@ def root():
 
 @app.route('/api/')
 def api():
-    questions = Todo.query.all()
+    questions = Todo.query.order_by(Todo.week).all()
+    #questions = Todo.query.all()
     question_schema = QuestionSchema(many=True)
     output = question_schema.dump(questions).data
     return jsonify({'question': output})
