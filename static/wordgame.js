@@ -1,7 +1,7 @@
 //var phaslo = new Array();
 //var pquestion = new Array();
-//var phaslo = 'haslo';
-//var pquestion = 'pytanie';
+var phaslo = 'haslo';
+var pquestion = 'pytanie';
 
 var request = new XMLHttpRequest(),
 	method = 'GET',
@@ -15,8 +15,8 @@ request.onload = function () {
 		var numer = Math.floor(Math.random() * data.questions.length) - 1;
 		numer++; if (numer > data.questions.length) numer = 0;
 
-		var phaslo = data.questions[numer].answer;
-		var pquestion = data.questions[numer].question;
+		phaslo = data.questions[numer].answer;
+		pquestion = data.questions[numer].question;
 		console.log(phaslo);
 		console.log(pquestion);
 		// for (var i = 0; i < data.questions.length; i++) {
