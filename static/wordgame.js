@@ -184,6 +184,3 @@ request.onload = function () {
 	}
 }
 request.send();
-//to tez test
-setTimeout(console.log(pquestion), 500);
-setTimeout(pquestion, 500);
