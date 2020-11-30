@@ -1,6 +1,8 @@
-from flask import Flask, url_for, request, render_template, redirect
+from flask import Flask, url_for, request, render_template, redirect, jsonify
 # to set up database I'll use SQLAlchemy
 from flask_sqlalchemy import SQLAlchemy
+# to create json from database
+from flask_marshmallow import Marshmallow
 # to set up an automatic data in the database when creating a new entry
 from datetime import datetime
 
@@ -8,10 +10,11 @@ app = Flask(__name__)
 # where the database is located, the database is called test.db
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
 db = SQLAlchemy(app)
-# creating a class here - a model
+ma = Marshmallow(app)
 
 
 class Todo(db.Model):
+    # table for questions
     id = db.Column(db.Integer, primary_key=True)
     question = db.Column(db.String(200), nullable=False)
     answer = db.Column(db.String(200), nullable=False)
@@ -20,20 +23,35 @@ class Todo(db.Model):
 
 
 class Admin(db.Model):
+    # table for admin
     id = db.Column(db.Integer, primary_key=True)
     fname = db.Column(db.String(100), nullable=False)
     sname = db.Column(db.String(100), nullable=False)
     email = db.Column(db.String(100), nullable=False)
+    #password = db.Column(db.String(100), nullable=False)
     # to retrieve what has been created; to get from the database the question and it's id
 
     def __repr__(self):
         return '<Question %r>' % self.id
 
 
+class QuestionSchema(ma.ModelSchema):
+    class Meta:
+        model = Todo
+
+
 @app.route('/', methods=['GET', 'POST'])
 def root():
     # templates word-game.html + newgame.html body content
     return render_template('newgame.html')
+
+
+@app.route('/api/')
+def api():
+    one_question = Todo.question.first()
+    question_schema = QuestionSchema()
+    output = question_schema.dump(one_question).data
+    return jsonify({'question': output})
 
 
 @app.route('/admin/', methods=['POST', 'GET'])
