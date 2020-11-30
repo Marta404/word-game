@@ -27,10 +27,10 @@ request.onload = function () {
 
 
 		//proby jakies
-		var new_haslo = phaslo;
-		var new_question = setTimeout(phaslo, 500);
-		setTimeout(console.log(pquestion + ' - to setout outside'), 400);
-		console.log(new_question + ' - new_question');
+		// var new_haslo = phaslo;
+		// var new_question = setTimeout(phaslo, 500);
+		// setTimeout(console.log(pquestion + ' - to setout outside'), 400);
+		// console.log(new_question + ' - new_question');
 
 
 
