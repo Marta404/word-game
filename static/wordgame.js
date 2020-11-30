@@ -20,9 +20,21 @@ var password = phaslo[numer];
 /////////////////////////////////////////////////////////
 
 //get questions and answers from database
+function setup() {
+	loadJSON('http://192.168.0.5:5000/api/', gotData);
+}
+
+function gotData(data) {
+	print(data);
+}
 //set up match.random
 //put the answer into variable 'password'
 
+
+
+
+
+/////////////////////////////////////////////////////////
 //var password = "example answer";
 password = password.toUpperCase();
 
