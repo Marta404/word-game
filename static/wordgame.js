@@ -40,22 +40,14 @@ request.onload = function () {
 request.send();
 
 
-//////************************************* */
-
-
-//console.log(phaslo)
 var new_haslo = phaslo;
-var new_question = setTimeout(pquestion, 500);
+var new_question = setTimeout(phaslo, 500);
 setTimeout(console.log(pquestion + ' - to setout outside'), 400);
 // console.log(new_haslo);
 console.log(new_question + ' - new_question');
-// //console.log(pquestion[4])
 
-// var numer = Math.floor(Math.random() * phaslo.length) - 1;
-// numer++; if (numer > phaslo.length) numer = 0;
 
-//var password = phaslo[numer].answer;
-//var question1 = phaslo[numer].question;
+//////////////////////////////////////////////////////////
 var password = phaslo;
 var question1 = pquestion;
 /////////////////////////////////////////////////////////
