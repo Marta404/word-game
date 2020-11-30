@@ -108,11 +108,7 @@ request.onload = function () {
 
 			for (i = 0; i <= 35; i++) {
 				var element = "lit" + i;
-				divs_content = divs_content + '<div class="litera"  id="' + element + '">' + letters[i] + '</div>';
-				//onclick="sprawdz(' + i + ')"
-
-				document.getElementById(element).addEventListener("click", sprawdz(i), false);
-
+				divs_content = divs_content + '<div class="litera" onclick="sprawdz(' + i + ')" id="' + element + '">' + letters[i] + '</div>';
 				if ((i + 1) % 9 == 0) divs_content = divs_content + '<div style="clear:both;"></div>';
 			}
 
