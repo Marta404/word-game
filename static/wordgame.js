@@ -136,7 +136,7 @@ request.onload = function () {
 
 
 		function notify() {
-			alert("clicked");
+			alert("clicked1");
 		}
 
 		////
