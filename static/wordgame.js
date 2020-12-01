@@ -111,7 +111,7 @@ request.onload = function () {
 				divs_content = divs_content + '<div class="litera"  id="' + element + '">' + letters[i] + '</div>';
 				//onclick="sprawdz(' + i + ')"
 
-				document.getElementById(element).addEventListener("click", sprawdz + '(' + i + ')', false);
+				document.getElementById(element).addEventListener("click", sprawdzMyFunction(i), false);
 
 				if ((i + 1) % 9 == 0) divs_content = divs_content + '<div style="clear:both;"></div>';
 			}
@@ -128,7 +128,7 @@ request.onload = function () {
 		}
 
 
-		function sprawdz(nr) {
+		var sprawdzMyFunction = function sprawdz(nr) {
 
 			var trafiona = false;
 
