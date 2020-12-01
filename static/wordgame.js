@@ -112,7 +112,7 @@ request.onload = function () {
 				//onclick="sprawdz(' + i + ')"
 
 				//document.getElementById(element).addEventListener("click", sprawdz(), false);
-				$(element).on("click", notify);
+				//$(element).on("click", notify);
 
 				if ((i + 1) % 9 == 0) divs_content = divs_content + '<div style="clear:both;"></div>';
 			}
@@ -128,6 +128,8 @@ request.onload = function () {
 			else return this.substr(0, miejsce) + znak + this.substr(miejsce + 1);
 		}
 		////
+		$(".basic").on("click", notify);
+
 		function notify() {
 			alert("clicked");
 		}
