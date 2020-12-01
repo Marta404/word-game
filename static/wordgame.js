@@ -1,10 +1,7 @@
-//var phaslo = new Array();
-//var pquestion = new Array();
 var phaslo = 'haslo';
 var pquestion = 'pytanie';
 
-//*** */
-
+//request to API
 var request = new XMLHttpRequest(),
 	method = 'GET',
 	url = 'http://192.168.0.5:5000/api/'
@@ -23,16 +20,6 @@ request.onload = function () {
 		console.log(pquestion);
 		// inna proba
 		setTimeout(console.log(pquestion + ' - to setout inside'), 400);
-
-
-
-		//proby jakies
-		// var new_haslo = phaslo;
-		// var new_question = setTimeout(phaslo, 500);
-		// setTimeout(console.log(pquestion + ' - to setout outside'), 400);
-		// console.log(new_question + ' - new_question');
-
-
 
 		//////////////////////////////////////////////////////////
 		var password = phaslo;
@@ -109,8 +96,6 @@ request.onload = function () {
 			for (i = 0; i <= 35; i++) {
 				var element = "lit" + i;
 				divs_content = divs_content + '<div class="litera"  id="' + element + '">' + letters[i] + '</div>';
-				//onclick="sprawdz(' + i + ')"
-
 
 				if ((i + 1) % 9 == 0) divs_content = divs_content + '<div style="clear:both;"></div>';
 			}
@@ -125,10 +110,6 @@ request.onload = function () {
 				$('#lit' + i).on("click", { nr: i }, sprawdz);
 			}
 
-			// $(".litera").on("click", notifyy); dziala
-			// function notifyy() {
-			// 	alert("clicked");
-			// }
 
 			function sprawdz(event) {
 
@@ -162,11 +143,9 @@ request.onload = function () {
 
 					//wrong answerr
 					errors_number++;
-					// var picture = "img/s" + errors_number + ".png";
-					// document.getElementById("szubienica").innerHTML = '<img src="' + picture + '" alt="" />';
 					var picture = `s${errors_number}.png`;
 					document.getElementById("stars").innerHTML = '<img src="static/img/' + picture + '" alt="" />';
-					//document.getElementById("stars").innerHTML = '<img src="{{ url_for(\'static/img\', filename=\'' + picture + '\') }}" alt="" />';
+
 				}
 
 				//Correct
@@ -176,7 +155,7 @@ request.onload = function () {
 				//Incorrect
 				if (errors_number >= 9)
 					document.getElementById("alfabet").innerHTML = "Game Over! Correct answer is: <br/>" + password + '<br /><br /><span class="reset" onclick="location.reload()">Next Question</span>';
-			} // end of sprawdzevent.data.
+			} // end of sprawdz()
 
 			write_password();
 		}
@@ -186,18 +165,13 @@ request.onload = function () {
 			else return this.substr(0, miejsce) + znak + this.substr(miejsce + 1);
 		}
 		////to co nizej dziala
-		for (i = 0; i <= 5; i++) {
-			$('#w' + i).on("click", { nr: i }, notify);
-		}
-		//$(".basic").on("click", notify);
-		function notify(event) {
-			alert("clicked " + event.data.nr);
-		}
-		//$(".litera").on("click", { nr: i }, sprawdz);
-		////
-
-
-
+		// for (i = 0; i <= 5; i++) {
+		// 	$('#w' + i).on("click", { nr: i }, notify);
+		// }
+		// //$(".basic").on("click", notify);
+		// function notify(event) {
+		// 	alert("clicked " + event.data.nr);
+		// }
 
 	} else {
 		console.log('error');
