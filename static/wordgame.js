@@ -128,7 +128,7 @@ request.onload = function () {
 			else return this.substr(0, miejsce) + znak + this.substr(miejsce + 1);
 		}
 		////
-		$(".basic").on("click", notify);
+		$(".litera").on("click", notify);
 
 		function notify() {
 			alert("clicked");
