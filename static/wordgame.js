@@ -165,7 +165,7 @@ request.onload = function () {
 					// var picture = "img/s" + errors_number + ".png";
 					// document.getElementById("szubienica").innerHTML = '<img src="' + picture + '" alt="" />';
 					var picture = `s${errors_number}.png`;
-					document.getElementById("stars").innerHTML = '<img src="static/img' + picture + '" alt="" />';
+					document.getElementById("stars").innerHTML = '<img src="static/img/' + picture + '" alt="" />';
 					//document.getElementById("stars").innerHTML = '<img src="{{ url_for(\'static/img\', filename=\'' + picture + '\') }}" alt="" />';
 				}
 
