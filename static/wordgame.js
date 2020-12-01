@@ -130,20 +130,20 @@ request.onload = function () {
 			// 	alert("clicked");
 			// }
 
-			function sprawdz(nr) {
+			function sprawdz(event) {
 
 				var trafiona = false;
 				//check password.length 
 				for (i = 0; i < lenght; i++) {
-					if (password.charAt(i) == letters[nr]) {
-						password1 = password1.ustawZnak(i, letters[nr]);
+					if (password.charAt(i) == letters[event.data.nr]) {
+						password1 = password1.ustawZnak(i, letters[event.data.nr]);
 						trafiona = true;
 					}
 				}
 
 				if (trafiona == true) {
 					//yes.play();
-					var element = "lit" + nr;
+					var element = "lit" + event.data.nr;
 					document.getElementById(element).style.background = "#f8f9fa";
 					document.getElementById(element).style.color = "#ef920c";
 					document.getElementById(element).style.border = "3px solid #ef920c";
@@ -153,7 +153,7 @@ request.onload = function () {
 				}
 				else {
 					//no.play();
-					var element = "lit" + nr;
+					var element = "lit" + event.data.nr;
 					document.getElementById(element).style.background = "#cccccc";
 					document.getElementById(element).style.color = "#fff";
 					document.getElementById(element).style.border = "3px solid #fff";
@@ -173,7 +173,7 @@ request.onload = function () {
 				//Incorrect
 				if (errors_number >= 9)
 					document.getElementById("alfabet").innerHTML = "Game Over! Correct answer is: <br/>" + password + '<br /><br /><span class="reset" onclick="location.reload()">Next Question</span>';
-			} // end of sprawdz
+			} // end of sprawdzevent.data.
 
 			write_password();
 		}
@@ -182,7 +182,7 @@ request.onload = function () {
 			if (miejsce > this.length - 1) return this.toString();
 			else return this.substr(0, miejsce) + znak + this.substr(miejsce + 1);
 		}
-		////
+		////to co nizej dziala
 		for (i = 0; i <= 5; i++) {
 			$('#w' + i).on("click", { nr: i }, notify);
 		}
