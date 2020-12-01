@@ -120,10 +120,11 @@ request.onload = function () {
 
 			document.getElementById("alfabet").innerHTML = divs_content;
 
-			$(".litera").on("click", notifyy);
-			function notifyy() {
-				alert("clicked");
-			}
+			$(".litera").on("click", sprawdz);
+			// $(".litera").on("click", notifyy); dziala
+			// function notifyy() {
+			// 	alert("clicked");
+			// }
 
 			write_password();
 		}
