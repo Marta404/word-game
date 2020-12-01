@@ -183,8 +183,8 @@ request.onload = function () {
 			else return this.substr(0, miejsce) + znak + this.substr(miejsce + 1);
 		}
 		////
-		for (i = 0; i <= 12; i++) {
-			$('.basic').on("click", { nr: i }, notify);
+		for (i = 0; i <= 5; i++) {
+			$('#w' + i).on("click", { nr: i }, notify);
 		}
 		//$(".basic").on("click", notify);
 		function notify(event) {
