@@ -133,7 +133,7 @@ request.onload = function () {
 			function sprawdz(nr) {
 
 				var trafiona = false;
-
+				//check password.length 
 				for (i = 0; i < lenght; i++) {
 					if (password.charAt(i) == letters[nr]) {
 						password1 = password1.ustawZnak(i, letters[nr]);
@@ -188,8 +188,6 @@ request.onload = function () {
 		function notify() {
 			alert("clicked1");
 		}
-
-		$(".litera").on("click", notify); // z tego poziomu nie dziala
 		//$(".litera").on("click", { nr: i }, sprawdz);
 		////
 
