@@ -113,8 +113,6 @@ request.onload = function () {
 
 				//document.getElementById(element).addEventListener("click", sprawdz(), false);
 				//$(element).on("click", notify);
-				$(".litera").on("click", { nr: i }, sprawdz);
-
 
 				if ((i + 1) % 9 == 0) divs_content = divs_content + '<div style="clear:both;"></div>';
 			}
@@ -141,8 +139,9 @@ request.onload = function () {
 			alert("clicked1");
 		}
 
+		$(".litera").on("click", notify);
+		//$(".litera").on("click", { nr: i }, sprawdz);
 		////
-
 
 		function sprawdz(nr) {
 
