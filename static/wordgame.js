@@ -113,6 +113,7 @@ request.onload = function () {
 
 				//document.getElementById(element).addEventListener("click", sprawdz(), false);
 				//$(element).on("click", notify);
+				$(".litera").on("click", { nr: i }, sprawdz);
 
 
 				if ((i + 1) % 9 == 0) divs_content = divs_content + '<div style="clear:both;"></div>';
@@ -120,7 +121,7 @@ request.onload = function () {
 
 			document.getElementById("alfabet").innerHTML = divs_content;
 
-			$(".litera").on("click", sprawdz);
+
 			// $(".litera").on("click", notifyy); dziala
 			// function notifyy() {
 			// 	alert("clicked");
@@ -134,9 +135,8 @@ request.onload = function () {
 			else return this.substr(0, miejsce) + znak + this.substr(miejsce + 1);
 		}
 		////
+
 		$(".basic").on("click", notify);
-
-
 		function notify() {
 			alert("clicked1");
 		}
