@@ -112,7 +112,7 @@ request.onload = function () {
 				//onclick="sprawdz(' + i + ')"
 
 				//document.getElementById(element).addEventListener("click", sprawdz(), false);
-				$("#" + element).on("click", sprawdz(i));
+				$("body").on("click", element, sprawdz(i));
 
 				if ((i + 1) % 9 == 0) divs_content = divs_content + '<div style="clear:both;"></div>';
 			}
@@ -141,7 +141,7 @@ request.onload = function () {
 			}
 
 			if (trafiona == true) {
-				yes.play();
+				//yes.play();
 				var element = "lit" + nr;
 				document.getElementById(element).style.background = "#f8f9fa";
 				document.getElementById(element).style.color = "#ef920c";
@@ -151,7 +151,7 @@ request.onload = function () {
 				write_password();
 			}
 			else {
-				no.play();
+				//no.play();
 				var element = "lit" + nr;
 				document.getElementById(element).style.background = "#cccccc";
 				document.getElementById(element).style.color = "#fff";
