@@ -120,7 +120,7 @@ request.onload = function () {
 			document.getElementById("alfabet").innerHTML = divs_content;
 
 			//**////// */
-			var test1 = $("lit1");
+			var test1 = $("#lit1");
 			console.log(test1);
 			var test1 = test1;
 			// $(".litera").on("click", notifyy); dziala
