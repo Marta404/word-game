@@ -101,33 +101,6 @@ request.onload = function () {
 		letters[35] = "0";
 
 		//24 
-
-		function start() {
-
-			var divs_content = "";
-
-			for (i = 0; i <= 35; i++) {
-				var element = "lit" + i;
-				divs_content = divs_content + '<div class="litera"  id="' + element + '">' + letters[i] + '</div>';
-				//onclick="sprawdz(' + i + ')"
-
-				document.getElementById(element).addEventListener("click", sprawdzMyFunction(i), false);
-
-				if ((i + 1) % 9 == 0) divs_content = divs_content + '<div style="clear:both;"></div>';
-			}
-
-			document.getElementById("alfabet").innerHTML = divs_content;
-
-
-			write_password();
-		}
-
-		String.prototype.ustawZnak = function (miejsce, znak) {
-			if (miejsce > this.length - 1) return this.toString();
-			else return this.substr(0, miejsce) + znak + this.substr(miejsce + 1);
-		}
-
-
 		var sprawdzMyFunction = function sprawdz(nr) {
 
 			var trafiona = false;
@@ -171,7 +144,36 @@ request.onload = function () {
 			//Incorrect
 			if (errors_number >= 9)
 				document.getElementById("alfabet").innerHTML = "Game Over! Correct answer is: <br/>" + password + '<br /><br /><span class="reset" onclick="location.reload()">Next Question</span>';
+		} // end of sprawdz()
+
+		//
+		function start() {
+
+			var divs_content = "";
+
+			for (i = 0; i <= 35; i++) {
+				var element = "lit" + i;
+				divs_content = divs_content + '<div class="litera"  id="' + element + '">' + letters[i] + '</div>';
+				//onclick="sprawdz(' + i + ')"
+
+				document.getElementById(element).addEventListener("click", sprawdzMyFunction(i), false);
+
+				if ((i + 1) % 9 == 0) divs_content = divs_content + '<div style="clear:both;"></div>';
+			}
+
+			document.getElementById("alfabet").innerHTML = divs_content;
+
+
+			write_password();
 		}
+
+		String.prototype.ustawZnak = function (miejsce, znak) {
+			if (miejsce > this.length - 1) return this.toString();
+			else return this.substr(0, miejsce) + znak + this.substr(miejsce + 1);
+		}
+
+
+
 
 
 	} else {
