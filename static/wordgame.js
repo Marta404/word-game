@@ -160,11 +160,11 @@ request.onload = function () {
 					document.getElementById(element).style.cursor = "default";
 					document.getElementById(element).setAttribute("onclick", ";");
 
-					//wrong answer
+					//wrong answerr
 					errors_number++;
 					// var picture = "img/s" + errors_number + ".png";
 					// document.getElementById("szubienica").innerHTML = '<img src="' + picture + '" alt="" />';
-					var picture = "s" + errors_number + ".png";
+					var picture = `s${errors_number}.png`;
 					document.getElementById("stars").innerHTML = '<img src="{{ url_for(\'static/img\', filename=\'' + picture + '\') }}" alt="" />';
 				}
 
