@@ -119,11 +119,59 @@ request.onload = function () {
 
 			document.getElementById("alfabet").innerHTML = divs_content;
 
-
+			//**////// */
+			var test1 = $("lit1");
+			console.log(test1);
+			var test1 = test1;
 			// $(".litera").on("click", notifyy); dziala
 			// function notifyy() {
 			// 	alert("clicked");
 			// }
+
+			function sprawdz(nr) {
+
+				var trafiona = false;
+
+				for (i = 0; i < lenght; i++) {
+					if (password.charAt(i) == letters[nr]) {
+						password1 = password1.ustawZnak(i, letters[nr]);
+						trafiona = true;
+					}
+				}
+
+				if (trafiona == true) {
+					//yes.play();
+					var element = "lit" + nr;
+					document.getElementById(element).style.background = "#f8f9fa";
+					document.getElementById(element).style.color = "#ef920c";
+					document.getElementById(element).style.border = "3px solid #ef920c";
+					document.getElementById(element).style.cursor = "default";
+
+					write_password();
+				}
+				else {
+					//no.play();
+					var element = "lit" + nr;
+					document.getElementById(element).style.background = "#cccccc";
+					document.getElementById(element).style.color = "#fff";
+					document.getElementById(element).style.border = "3px solid #fff";
+					document.getElementById(element).style.cursor = "default";
+					document.getElementById(element).setAttribute("onclick", ";");
+
+					//wrong answer
+					errors_number++;
+					var picture = "img/s" + errors_number + ".png";
+					document.getElementById("szubienica").innerHTML = '<img src="' + picture + '" alt="" />';
+				}
+
+				//Correct
+				if (password == password1)
+					document.getElementById("alfabet").innerHTML = 'Yes, that is correct! <br/><br /><br /><span class="reset" onclick="location.reload()">Next Question</span>';
+
+				//Incorrect
+				if (errors_number >= 9)
+					document.getElementById("alfabet").innerHTML = "Game Over! Correct answer is: <br/>" + password + '<br /><br /><span class="reset" onclick="location.reload()">Next Question</span>';
+			} // end of sprawdz
 
 			write_password();
 		}
@@ -139,54 +187,11 @@ request.onload = function () {
 			alert("clicked1");
 		}
 
-		$(".litera").on("click", notify);
+		$(".litera").on("click", notify); // z tego poziomu nie dziala
 		//$(".litera").on("click", { nr: i }, sprawdz);
 		////
 
-		function sprawdz(nr) {
 
-			var trafiona = false;
-
-			for (i = 0; i < lenght; i++) {
-				if (password.charAt(i) == letters[nr]) {
-					password1 = password1.ustawZnak(i, letters[nr]);
-					trafiona = true;
-				}
-			}
-
-			if (trafiona == true) {
-				//yes.play();
-				var element = "lit" + nr;
-				document.getElementById(element).style.background = "#f8f9fa";
-				document.getElementById(element).style.color = "#ef920c";
-				document.getElementById(element).style.border = "3px solid #ef920c";
-				document.getElementById(element).style.cursor = "default";
-
-				write_password();
-			}
-			else {
-				//no.play();
-				var element = "lit" + nr;
-				document.getElementById(element).style.background = "#cccccc";
-				document.getElementById(element).style.color = "#fff";
-				document.getElementById(element).style.border = "3px solid #fff";
-				document.getElementById(element).style.cursor = "default";
-				document.getElementById(element).setAttribute("onclick", ";");
-
-				//wrong answer
-				errors_number++;
-				var picture = "img/s" + errors_number + ".png";
-				document.getElementById("szubienica").innerHTML = '<img src="' + picture + '" alt="" />';
-			}
-
-			//Correct
-			if (password == password1)
-				document.getElementById("alfabet").innerHTML = 'Yes, that is correct! <br/><br /><br /><span class="reset" onclick="location.reload()">Next Question</span>';
-
-			//Incorrect
-			if (errors_number >= 9)
-				document.getElementById("alfabet").innerHTML = "Game Over! Correct answer is: <br/>" + password + '<br /><br /><span class="reset" onclick="location.reload()">Next Question</span>';
-		} // end of sprawdz
 
 
 	} else {
