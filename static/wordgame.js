@@ -112,6 +112,7 @@ request.onload = function () {
 				//onclick="sprawdz(' + i + ')"
 
 				//document.getElementById(element).addEventListener("click", sprawdz(), false);
+				$("#" + element).on("click", sprawdz(i));
 
 				if ((i + 1) % 9 == 0) divs_content = divs_content + '<div style="clear:both;"></div>';
 			}
