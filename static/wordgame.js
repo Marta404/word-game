@@ -110,52 +110,8 @@ request.onload = function () {
 				var element = "lit" + i;
 				divs_content = divs_content + '<div class="litera"  id="' + element + '">' + letters[i] + '</div>';
 				//onclick="sprawdz(' + i + ')"
-				function sprawdz(nr) {
 
-					var trafiona = false;
-
-					for (i = 0; i < lenght; i++) {
-						if (password.charAt(i) == letters[nr]) {
-							password1 = password1.ustawZnak(i, letters[nr]);
-							trafiona = true;
-						}
-					}
-
-					if (trafiona == true) {
-						yes.play();
-						var element = "lit" + nr;
-						document.getElementById(element).style.background = "#f8f9fa";
-						document.getElementById(element).style.color = "#ef920c";
-						document.getElementById(element).style.border = "3px solid #ef920c";
-						document.getElementById(element).style.cursor = "default";
-
-						write_password();
-					}
-					else {
-						no.play();
-						var element = "lit" + nr;
-						document.getElementById(element).style.background = "#cccccc";
-						document.getElementById(element).style.color = "#fff";
-						document.getElementById(element).style.border = "3px solid #fff";
-						document.getElementById(element).style.cursor = "default";
-						document.getElementById(element).setAttribute("onclick", ";");
-
-						//wrong answer
-						errors_number++;
-						var picture = "img/s" + errors_number + ".png";
-						document.getElementById("szubienica").innerHTML = '<img src="' + picture + '" alt="" />';
-					}
-
-					//Correct
-					if (password == password1)
-						document.getElementById("alfabet").innerHTML = 'Yes, that is correct! <br/><br /><br /><span class="reset" onclick="location.reload()">Next Question</span>';
-
-					//Incorrect
-					if (errors_number >= 9)
-						document.getElementById("alfabet").innerHTML = "Game Over! Correct answer is: <br/>" + password + '<br /><br /><span class="reset" onclick="location.reload()">Next Question</span>';
-				} // end of sprawdz
-
-				document.getElementById(element).addEventListener("click", sprawdz, false);
+				document.getElementById(element).addEventListener("click", sprawdz(), false);
 
 				if ((i + 1) % 9 == 0) divs_content = divs_content + '<div style="clear:both;"></div>';
 			}
@@ -170,9 +126,52 @@ request.onload = function () {
 			if (miejsce > this.length - 1) return this.toString();
 			else return this.substr(0, miejsce) + znak + this.substr(miejsce + 1);
 		}
-		//sprawdz tu bylo:
 
 
+		function sprawdz(nr) {
+
+			var trafiona = false;
+
+			for (i = 0; i < lenght; i++) {
+				if (password.charAt(i) == letters[nr]) {
+					password1 = password1.ustawZnak(i, letters[nr]);
+					trafiona = true;
+				}
+			}
+
+			if (trafiona == true) {
+				yes.play();
+				var element = "lit" + nr;
+				document.getElementById(element).style.background = "#f8f9fa";
+				document.getElementById(element).style.color = "#ef920c";
+				document.getElementById(element).style.border = "3px solid #ef920c";
+				document.getElementById(element).style.cursor = "default";
+
+				write_password();
+			}
+			else {
+				no.play();
+				var element = "lit" + nr;
+				document.getElementById(element).style.background = "#cccccc";
+				document.getElementById(element).style.color = "#fff";
+				document.getElementById(element).style.border = "3px solid #fff";
+				document.getElementById(element).style.cursor = "default";
+				document.getElementById(element).setAttribute("onclick", ";");
+
+				//wrong answer
+				errors_number++;
+				var picture = "img/s" + errors_number + ".png";
+				document.getElementById("szubienica").innerHTML = '<img src="' + picture + '" alt="" />';
+			}
+
+			//Correct
+			if (password == password1)
+				document.getElementById("alfabet").innerHTML = 'Yes, that is correct! <br/><br /><br /><span class="reset" onclick="location.reload()">Next Question</span>';
+
+			//Incorrect
+			if (errors_number >= 9)
+				document.getElementById("alfabet").innerHTML = "Game Over! Correct answer is: <br/>" + password + '<br /><br /><span class="reset" onclick="location.reload()">Next Question</span>';
+		} // end of sprawdz
 
 
 	} else {
