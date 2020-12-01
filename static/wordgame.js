@@ -114,6 +114,9 @@ request.onload = function () {
 				//document.getElementById(element).addEventListener("click", sprawdz(), false);
 				//$(element).on("click", notify);
 				$(".litera").on("click", notify);
+				function notify() {
+					alert("clicked");
+				}
 
 				if ((i + 1) % 9 == 0) divs_content = divs_content + '<div style="clear:both;"></div>';
 			}
