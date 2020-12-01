@@ -112,7 +112,7 @@ request.onload = function () {
 				//onclick="sprawdz(' + i + ')"
 
 				//document.getElementById(element).addEventListener("click", sprawdz(), false);
-				$("#" + element).on("click", sprawdz(i));
+				$("#" + element).on("click", notify);
 
 				if ((i + 1) % 9 == 0) divs_content = divs_content + '<div style="clear:both;"></div>';
 			}
@@ -127,6 +127,12 @@ request.onload = function () {
 			if (miejsce > this.length - 1) return this.toString();
 			else return this.substr(0, miejsce) + znak + this.substr(miejsce + 1);
 		}
+		////
+		function notify() {
+			alert("clicked");
+		}
+
+		////
 
 
 		function sprawdz(nr) {
