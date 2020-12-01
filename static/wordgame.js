@@ -129,6 +129,7 @@ request.onload = function () {
 		}
 		////
 		$(".basic").on("click", notify);
+		$(".litera").on("click", notify);
 
 		function notify() {
 			alert("clicked");
