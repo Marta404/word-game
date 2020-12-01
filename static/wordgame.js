@@ -111,8 +111,6 @@ request.onload = function () {
 				divs_content = divs_content + '<div class="litera"  id="' + element + '">' + letters[i] + '</div>';
 				//onclick="sprawdz(' + i + ')"
 
-				//document.getElementById(element).addEventListener("click", sprawdz(), false);
-				//$(element).on("click", notify);
 
 				if ((i + 1) % 9 == 0) divs_content = divs_content + '<div style="clear:both;"></div>';
 			}
@@ -122,7 +120,11 @@ request.onload = function () {
 			//**////// */
 			var test1 = $("#lit1");
 			console.log(test1);
-			var test1 = test1;
+
+			for (i = 0; i <= 35; i++) {
+				$('#lit' + i).on("click", { nr: i }, sprawdz);
+			}
+
 			// $(".litera").on("click", notifyy); dziala
 			// function notifyy() {
 			// 	alert("clicked");
