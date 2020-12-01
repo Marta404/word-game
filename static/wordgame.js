@@ -162,8 +162,10 @@ request.onload = function () {
 
 					//wrong answer
 					errors_number++;
-					var picture = "img/s" + errors_number + ".png";
-					document.getElementById("szubienica").innerHTML = '<img src="' + picture + '" alt="" />';
+					// var picture = "img/s" + errors_number + ".png";
+					// document.getElementById("szubienica").innerHTML = '<img src="' + picture + '" alt="" />';
+					var picture = "s" + errors_number + ".png";
+					document.getElementById("szubienica").innerHTML = '<img src="{{ url_for(\'static/img\', filename=' + picture + ') }}" alt="" />';
 				}
 
 				//Correct
