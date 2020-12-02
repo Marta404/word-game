@@ -268,15 +268,16 @@ span.small {
 /*question table*/
 .qtable table {
 	width: 100%;
-	background-color: #efefef;
 }
+
 .qtable table, th, td{
 	min-width: 22%;
 	padding: 5px;
 	border-bottom: 2px #999 solid;
 	box-sizing: border-box;
 	text-align: left;
-	margin-right: 5px;;
+	margin-right: 5px;
+	background-color: #efefef;
 
 }
 .cellweek{
