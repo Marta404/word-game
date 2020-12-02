@@ -63,7 +63,8 @@ def admin():
         name = request.form['email1']
         # templates word-game.html + admin.html body content
         # return render_template('login.html')
-        return "Hello %s" % name
+        # return render_template('account.html', name=name)
+        return redirect('/admin/account/', name=name)
     else:
         return render_template('login.html')
 
