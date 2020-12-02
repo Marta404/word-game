@@ -60,7 +60,6 @@ def api():
 def admin():
     # return render_template('login.html')
     if request.method == 'POST':
-        print(request.form)
         name = request.form['email1']
         # templates word-game.html + admin.html body content
         # return render_template('login.html')
