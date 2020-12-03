@@ -1,7 +1,7 @@
 # from workbook
 import bcrypt
 from functools import wraps
-from fask import Flask
+from flask import Flask
 #################################################################
 from flask import Flask, url_for, request, render_template, redirect, jsonify, flash, session
 # to set up database I'll use SQLAlchemy
