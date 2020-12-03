@@ -29,7 +29,7 @@ ma = Marshmallow(app)
 ######################################################################
 app.secret_key = 'THISisMYsecretKey009'
 valid_email = 'admin@a.com'
-valid_pwhash = bcrypt.hashpw('secretpass', bcrypt.gensalt())
+valid_pwhash = bcrypt.hashpw('secretpass'.encode('utf-8'), bcrypt.gensalt())
 
 
 def check_auth(email, password):
