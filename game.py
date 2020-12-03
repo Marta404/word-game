@@ -11,8 +11,9 @@ from flask_marshmallow import Marshmallow
 # to set up an automatic data in the database when creating a new entry
 from datetime import datetime
 # new to use login
-from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
-from werkzeug.security import generate_password_hash, check_password_hash
+# , login_user, login_required, logout_user, current_user
+from flask_login import LoginManager, UserMixin
+##from werkzeug.security import generate_password_hash, check_password_hash
 
 
 app = Flask(__name__)
