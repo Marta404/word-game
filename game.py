@@ -1,4 +1,9 @@
-from flask import Flask, url_for, request, render_template, redirect, jsonify, flash
+# from workbook
+import bcrypt
+from functools import wraps
+from fask import Flask
+#################################################################
+from flask import Flask, url_for, request, render_template, redirect, jsonify, flash, session
 # to set up database I'll use SQLAlchemy
 from flask_sqlalchemy import SQLAlchemy
 # to create json from database
@@ -18,11 +23,55 @@ app.config['SECRET_KEY'] = 'THISisMYsecretKey009'
 db = SQLAlchemy(app)
 ma = Marshmallow(app)
 # new to login
-login_manager = LoginManager()
+###login_manager = LoginManager()
 # login_manager.init.app(app)
 # new to login, userMix will enable a few additional methods
-
 ######################################################################
+app.secret_key = 'THISisMYsecretKey009'
+valid_email = 'admin@a.com'
+valid_pwhash = bcrypt.hashpw('secret', bcrypt.gensalt())
+
+
+def check_auth(email, password):
+    if (email == valid_email and valid_pwhash == bcrypt.hashpw(pwd.encode('utf-8'), valid_pwhash)):
+        return True
+    return False
+
+
+def requires_login(f):
+    @wraps(f)
+    def decorated(*args, **kwargs):
+        status = session.get('logged_in', False)
+        if not status:
+            return redirect(url_for('/admin/'))
+        return f(*args, **kwargs)
+    return decorated
+
+
+@app.route('/admin/logout/')
+def admin_logout():
+    session['logged_in'] = False
+    return redirect(url_for('/admin/'))
+
+
+@app.route('/admin/account/')
+@requires_login
+def admin_account():
+    return redirect(url_for('/admin/account/', admin_name="yes"))
+
+
+@app.route('/admin/', methods=['POST', 'GET'])
+def admin():
+    if request.method == 'POST':
+        user = request.form['email1']
+        pw = request.form['pwd']
+
+        if check_auth(request.form['email'], request.form['pwd']):
+            session['logged_in'] = True
+            return redirect(url_for('.admin.account'))
+    return render_template('login.html')
+
+    ######################################################################
 
 
 class Todo(db.Model):
@@ -51,51 +100,53 @@ class QuestionSchema(ma.SQLAlchemyAutoSchema):
     class Meta:
         model = Todo
 
+
 # new user login
+######################################
 
 
-@login_manager.user_loader
-def load_user(admin_id):
-    return Admin.query.get(int(admin_id))
+# @login_manager.user_loader
+# def load_user(admin_id):
+#     return Admin.query.get(int(admin_id))
 
 
-@app.route('/admin/')
-def admin():
-    return render_template('login.html')
+# @app.route('/admin/')
+# def admin():
+#     return render_template('login.html')
 
 
-@app.route('/admin/', methods=['POST'])
-# for testing admin panel navigation - temporary directory
-def admin():
-    email = request.form.get('email1')
-    password = request.form.get('pwd')
+# @app.route('/admin/', methods=['POST'])
+# # for testing admin panel navigation - temporary directory
+# def admin_post():
+#     email = request.form.get('email1')
+#     password = request.form.get('pwd')
 
-    admin = Admin.query.filter_by(email=email).first()
+#     admin = Admin.query.filter_by(email=email).first()
 
-    if not admin and not check_password_hash(admin.password, password):
-        flash('Please check your login details and try again.')
-        # return redirect(url_for('admin'))
-        # return redirect('/admin/add/')
-        return 'redirect here'
+#     if not admin and not check_password_hash(admin.password, password):
+#         flash('Please check your login details and try again.')
+#         # return redirect(url_for('admin'))
+#         # return redirect('/admin/add/')
+#         return 'redirect here'
 
-    login_user(admin)
+#     login_user(admin)
 
-    # return redirect(url_for('admin/account'))
-    return redirect('/admin/account/')
-
-
-@app.route('/admin/logout/')
-@login_required
-def logout():
-    logout_user()
-    return redirect('/admin/')
+#     # return redirect(url_for('admin/account'))
+#     return redirect('/admin/account/')
 
 
-@app.route('/admin/account/')
-@login_required
-def admin_account():
-    admin = current_user.fname + " " + current_user.sname
-    return render_template('account.html', admin_name=admin)
+# @app.route('/admin/logout/')
+# @login_required
+# def logout():
+#     logout_user()
+#     return redirect('/admin/')
+
+
+# @app.route('/admin/account/')
+# @login_required
+# def admin_account():
+#     admin = current_user.fname + " " + current_user.sname
+#     return render_template('account.html', admin_name=admin)
     ##############################################################
 
 
