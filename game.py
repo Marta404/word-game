@@ -72,7 +72,7 @@ def admin_post():
 
     admin = Admin.query.filter_by(email=email).first()
 
-    if not admin and not check_password_hash(user.password, password):
+    if not admin and not check_password_hash(admin.password, password):
         flash('Please check your login details and try again.')
         return redirect(url_for('admin'))
 
