@@ -59,7 +59,7 @@ def admin_logout():
 # @requires_login
 def account():
     yes = "yes"
-    return render_template('account.html', admin_name=yes)
+    return render_template('account.html', yes=admin_name)
 
 
 @app.route('/admin/', methods=['POST', 'GET'])
