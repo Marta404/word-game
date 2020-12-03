@@ -57,9 +57,10 @@ def api():
 
 @app.route('/admin/', methods=['POST', 'GET'])
 # for testing admin panel navigation - temporary directory
-def admin():
+def admin(name=None):
     # return render_template('login.html')
     if request.method == 'POST':
+        # print(request.form)
         name = request.form['email1']
         # templates word-game.html + admin.html body content
         # return render_template('login.html')
