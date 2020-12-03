@@ -1,4 +1,4 @@
-from flask import Flask, url_for, request, render_template, redirect, jsonify, flash
+from flask import Flask, url_for, request, render_template, redirect, jsonify
 # to set up database I'll use SQLAlchemy
 from flask_sqlalchemy import SQLAlchemy
 # to create json from database
@@ -66,8 +66,8 @@ def admin(name=None):
 
         # templates word-game.html + admin.html body content
         # return render_template('login.html')
-        # return render_template('account.html', name=name)
-        return redirect('/admin/account/<name>', name=name)
+        return render_template('account.html', name=name)
+        # return redirect('/admin/account/', name=name)
     else:
         return render_template('login.html')
 
@@ -134,7 +134,6 @@ def admin_edit(id):
 
 
 @app.route('/admin/account/')
-@app.route('/admin/account/<name>')
 def admin_account():
     # templates word-game.html + edit.questions.html body content
     return render_template('account.html')
