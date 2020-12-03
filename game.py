@@ -66,7 +66,7 @@ def admin():
 
 @app.route('/admin/', methods=['POST'])
 # for testing admin panel navigation - temporary directory
-def admin_post():
+def admin():
     email = request.form.get('email1')
     password = request.form.get('pwd')
 
