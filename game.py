@@ -35,8 +35,8 @@ valid_pwhash = bcrypt.hashpw('secretpass'.encode('utf-8'), bcrypt.gensalt())
 
 def check_auth(email, password):
     if (email == valid_email and valid_pwhash == bcrypt.hashpw(password.encode('utf-8'), valid_pwhash)):
-        return True
-    return False
+        return session['logged_in'] = True  # session['logged_in'] =
+    return session['logged_in'] = False  # session['logged_in'] =
 
 
 def requires_login(f):
