@@ -35,8 +35,8 @@ valid_pwhash = bcrypt.hashpw('secretpass'.encode('utf-8'), bcrypt.gensalt())
 
 def check_auth(email, password):
     if (email == valid_email and valid_pwhash == bcrypt.hashpw(password.encode('utf-8'), valid_pwhash)):
-        return session['logged_in'] = True  # session['logged_in'] =
-    return session['logged_in'] = False  # session['logged_in'] =
+        return True
+    return False
 
 
 def requires_login(f):
@@ -70,7 +70,7 @@ def admin():
         if check_auth(request.form['email1'], request.form['pwd']):
             session['logged_in'] = True
             return 'logged'
-    return render_template('login.html')
+    return 'niezalogowany'
 
     ######################################################################
 
