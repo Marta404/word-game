@@ -75,7 +75,8 @@ def admin_post():
     if not admin and not check_password_hash(admin.password, password):
         flash('Please check your login details and try again.')
         # return redirect(url_for('admin'))
-        return redirect('/admin/add/')
+        # return redirect('/admin/add/')
+        return 'redirect here'
 
     login_user(admin)
 
