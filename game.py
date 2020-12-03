@@ -1,16 +1,27 @@
-from flask import Flask, url_for, request, render_template, redirect, jsonify
+from flask import Flask, url_for, request, render_template, redirect, jsonify, flash
 # to set up database I'll use SQLAlchemy
 from flask_sqlalchemy import SQLAlchemy
 # to create json from database
 from flask_marshmallow import Marshmallow
 # to set up an automatic data in the database when creating a new entry
 from datetime import datetime
+# new to use login
+from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
+from werkzeug.security import generate_password_hash, check_password_hash
 
 app = Flask(__name__)
 # where the database is located, the database is called test.db
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
+# new add secret key
+app.config['SECRET_KEY'] = 'THISisMYsecretKey009'
 db = SQLAlchemy(app)
 ma = Marshmallow(app)
+# new to login
+login_manager = LoginManager()
+login_manager.init.app(app)
+# new to login, userMix will enable a few additional methods
+
+######################################################################
 
 
 class Todo(db.Model):
@@ -19,16 +30,16 @@ class Todo(db.Model):
     question = db.Column(db.String(200), nullable=False)
     answer = db.Column(db.String(200), nullable=False)
     week = db.Column(db.String(5), nullable=False)
-    date_created = db.Column(db.DateTime, default=datetime.utcnow)
 
 
-class Admin(db.Model):
+class Admin(UserMixin, db.Model):
     # table for admin
     id = db.Column(db.Integer, primary_key=True)
-    fname = db.Column(db.String(100), nullable=False)
-    sname = db.Column(db.String(100), nullable=False)
-    email = db.Column(db.String(100), nullable=False)
-    #password = db.Column(db.String(100), nullable=False)
+    fname = db.Column(db.String(50), nullable=False)
+    sname = db.Column(db.String(50), nullable=False)
+    email = db.Column(db.String(50), nullable=False, unique=True)
+    password = db.Column(db.String(50), nullable=False)
+    date_created = db.Column(db.DateTime, default=datetime.utcnow)
     # to retrieve what has been created; to get from the database the question and it's id
 
     def __repr__(self):
@@ -38,6 +49,50 @@ class Admin(db.Model):
 class QuestionSchema(ma.SQLAlchemyAutoSchema):
     class Meta:
         model = Todo
+
+# new user login
+
+
+@login_manager.user_loader
+def load_user(admin_id):
+    return Admin.query.get(int(admin_id))
+
+
+@app.route('/admin/')
+def admin():
+    return render_template('login.html')
+
+
+@app.route('/admin/', methods=['POST'])
+# for testing admin panel navigation - temporary directory
+def admin_post():
+    email = request.form.get('email1')
+    password = request.form.get('pwd')
+
+    admin = Admin.query.filter_by(email=email).first()
+
+    if not admin and not check_password_hash(user.password, password):
+        flash('Please check your login details and try again.')
+        return redirect(url_for('admin'))
+
+    login_user(admin)
+
+    return redirect(url_for('admin/account'))
+
+
+@app.route('/admin/logout/')
+@login_required
+def logout():
+    logout_user()
+    return redirect('/admin/')
+
+
+@app.route('/admin/account/')
+@login_required
+def admin_account():
+    admin = current_user.fname + " " + current_user.sname
+    return render_template('account.html', admin_name=admin)
+    ##############################################################
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -55,21 +110,23 @@ def api():
     return jsonify({'questions': output})
 
 
-@app.route('/admin/', methods=['POST', 'GET'])
-# for testing admin panel navigation - temporary directory
-def admin(name=None):
-    # return render_template('login.html')
-    if request.method == 'POST':
-        # print(request.form)
-        email = request.form['email1']
-        name = {name: email}
+# @app.route('/admin/', methods=['POST', 'GET'])
+# # for testing admin panel navigation - temporary directory
+# def admin(name=None):
+#     # return render_template('login.html')
+#     if request.method == 'POST':
+#         # print(request.form)
+#         email = request.form['email1']
+#         name = {name: email}
+#         return redirect('/admin/account/')
+#     else:
+#         return render_template('login.html')
 
-        # templates word-game.html + admin.html body content
-        # return render_template('login.html')
-        # return render_template('account.html', name=name)
-        return redirect('/admin/account/')
-    else:
-        return render_template('login.html')
+
+# @app.route('/admin/account/')
+# def admin_account():
+#     # templates word-game.html + edit.questions.html body content
+#     return render_template('account.html')
 
 
 # in test mode - admin panel directories - no credentials required yet
@@ -131,12 +188,6 @@ def admin_edit(id):
 
     else:
         return render_template('edit.questions.html', question=question)
-
-
-@app.route('/admin/account/')
-def admin_account():
-    # templates word-game.html + edit.questions.html body content
-    return render_template('account.html')
 
 
 @app.errorhandler(404)
