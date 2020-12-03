@@ -270,6 +270,9 @@ span.small {
 	width: 100%;
 }
 
+.qtable table, th {
+	color: #ef920c;
+}
 .qtable table, th, td{
 	min-width: 22%;
 	padding: 5px;
