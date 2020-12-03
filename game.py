@@ -8,6 +8,8 @@ from datetime import datetime
 # new to use login
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
+from . import db
+
 
 app = Flask(__name__)
 # where the database is located, the database is called test.db
@@ -40,10 +42,10 @@ class Admin(UserMixin, db.Model):
     email = db.Column(db.String(50), nullable=False, unique=True)
     password = db.Column(db.String(50), nullable=False)
     date_created = db.Column(db.DateTime, default=datetime.utcnow)
-    # to retrieve what has been created; to get from the database the question and it's id
 
     def __repr__(self):
         return '<Question %r>' % self.id
+    # to retrieve what has been created; to get from the database the question and it's id
 
 
 class QuestionSchema(ma.SQLAlchemyAutoSchema):
