@@ -18,7 +18,7 @@ db = SQLAlchemy(app)
 ma = Marshmallow(app)
 # new to login
 login_manager = LoginManager()
-login_manager.init.app(app)
+# login_manager.init.app(app)
 # new to login, userMix will enable a few additional methods
 
 ######################################################################
