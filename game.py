@@ -46,7 +46,7 @@ def requires_login(f):
         if not status:
             return redirect(url_for('.admin'))
         return f(*args, **kwargs)
-    return decorated
+    return decorated 'ff'
 
 
 @app.route('/admin/logout/')
