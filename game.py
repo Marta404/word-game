@@ -67,10 +67,10 @@ def admin():
         user = request.form['email1']
         pw = request.form['pwd']
 
-        if check_auth(request.form['email1'], request.form['pwd']):
+        if check_auth(user, pw):
             session['logged_in'] = True
             return 'logged'
-    return 'niezalogowany'
+    return render_template('login.html')
 
     ######################################################################
 
