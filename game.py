@@ -67,7 +67,7 @@ def admin(name=None):
         # templates word-game.html + admin.html body content
         # return render_template('login.html')
         # return render_template('account.html', name=name)
-        return redirect('/admin/account/', name=name)
+        return redirect('/admin/account/')
     else:
         return render_template('login.html')
 
@@ -134,7 +134,7 @@ def admin_edit(id):
 
 
 @app.route('/admin/account/')
-def admin_account(name):
+def admin_account():
     # templates word-game.html + edit.questions.html body content
     return render_template('account.html')
 
