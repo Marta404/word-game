@@ -44,7 +44,7 @@ def requires_login(f):
     def decorated(*args, **kwargs):
         status = session.get('logged_in', False)
         if not status:
-            return redirect(url_for('/admin/'))
+            return redirect(url_for('admin'))
         return f(*args, **kwargs)
     return decorated
 
@@ -52,13 +52,13 @@ def requires_login(f):
 @app.route('/admin/logout/')
 def admin_logout():
     session['logged_in'] = False
-    return redirect(url_for('/admin/'))
+    return redirect(url_for('admin'))
 
 
 @app.route('/admin/account/')
 @requires_login
 def admin_account():
-    return redirect(url_for('/admin/account/', admin_name="yes"))
+    return redirect(url_for('admin/account', admin_name="yes"))
 
 
 @app.route('/admin/', methods=['POST', 'GET'])
