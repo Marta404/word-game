@@ -44,7 +44,7 @@ def requires_login(f):
     def decorated(*args, **kwargs):
         status = session.get('logged_in', False)
         if not status:
-            return redirect('/admin/')
+            return 'g'  # redirect('/admin/')
         return f(*args, **kwargs)
     return decorated
 
