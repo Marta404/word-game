@@ -61,7 +61,9 @@ def admin(name=None):
     # return render_template('login.html')
     if request.method == 'POST':
         # print(request.form)
-        name = request.form['email1']
+        email = request.form['email1']
+        name = {email: name}
+
         # templates word-game.html + admin.html body content
         # return render_template('login.html')
         # return render_template('account.html', name=name)
