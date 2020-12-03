@@ -69,7 +69,7 @@ def admin():
 
         if check_auth(request.form['email'], request.form['pwd']):
             session['logged_in'] = True
-            return redirect(url_for('.admin.account'))
+            return 'logged'
     return render_template('login.html')
 
     ######################################################################
