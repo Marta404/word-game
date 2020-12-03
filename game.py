@@ -11,7 +11,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 
 app = Flask(__name__)
 # where the database is located, the database is called test.db
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///gamedb.db'
 # new add secret key
 app.config['SECRET_KEY'] = 'THISisMYsecretKey009'
 db = SQLAlchemy(app)
