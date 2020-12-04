@@ -170,7 +170,7 @@ request.onload = function () {
 		}
 		//$(".basic").on("click", notify);
 		function notify(event) {
-			alert("clicked " + event.data.nr);
+			//alert("clicked " + event.data.nr);
 			$("#w" + event.data.nr).css('background', 'gray');
 			//document.getElementById(bgcolch).class = "selected";
 		}
