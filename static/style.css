@@ -54,13 +54,12 @@ li {
 li:last-child {
   border-right: none;
 }
-li:first-child {
-  display: block;
+#weekk{
   color: white;
   text-align: center;
   padding: 14px 16px ;
-  text-decoration: none;
 }
+
 li a {
   display: block;
   color: white;
