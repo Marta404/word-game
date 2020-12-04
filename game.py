@@ -33,6 +33,37 @@ valid_email = 'admin@a.com'
 valid_pwhash = bcrypt.hashpw('secretpass'.encode('utf-8'), bcrypt.gensalt())
 
 
+class Todo(db.Model):
+    # table for questions
+    id = db.Column(db.Integer, primary_key=True)
+    question = db.Column(db.String(200), nullable=False)
+    answer = db.Column(db.String(200), nullable=False)
+    week = db.Column(db.String(5), nullable=False)
+
+    def __repr__(self):
+        return '<Question %r>' % self.id
+
+
+class Admin(UserMixin, db.Model):
+    # table for admin
+    id = db.Column(db.Integer, primary_key=True)
+    fname = db.Column(db.String(50), nullable=False)
+    sname = db.Column(db.String(50), nullable=False)
+    email = db.Column(db.String(50), nullable=False, unique=True)
+    password = db.Column(db.String(50), nullable=False)
+    date_created = db.Column(db.DateTime, default=datetime.utcnow)
+
+    # to retrieve what has been created; to get from the database the question and it's id
+
+    def __repr__(self):
+        return '<Admin %r>' % self.id
+
+
+class QuestionSchema(ma.SQLAlchemyAutoSchema):
+    class Meta:
+        model = Todo
+
+
 def check_auth(email, password):
     if (email == valid_email and valid_pwhash == bcrypt.hashpw(password.encode('utf-8'), valid_pwhash)):
         return True
@@ -76,36 +107,6 @@ def admin():
     return render_template('login.html')
 
     ######################################################################
-
-
-class Todo(db.Model):
-    # table for questions
-    id = db.Column(db.Integer, primary_key=True)
-    question = db.Column(db.String(200), nullable=False)
-    answer = db.Column(db.String(200), nullable=False)
-    week = db.Column(db.String(5), nullable=False)
-
-
-class Admin(UserMixin, db.Model):
-    # table for admin
-    id = db.Column(db.Integer, primary_key=True)
-    fname = db.Column(db.String(50), nullable=False)
-    sname = db.Column(db.String(50), nullable=False)
-    email = db.Column(db.String(50), nullable=False, unique=True)
-    password = db.Column(db.String(50), nullable=False)
-    date_created = db.Column(db.DateTime, default=datetime.utcnow)
-
-    def __repr__(self):
-        return '<Question %r>' % self.id
-    # to retrieve what has been created; to get from the database the question and it's id
-
-    def __repr__(self):
-        return '<Admin %r>' % self.id
-
-
-class QuestionSchema(ma.SQLAlchemyAutoSchema):
-    class Meta:
-        model = Todo
 
 
 @app.route('/', methods=['GET', 'POST'])
