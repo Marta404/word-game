@@ -165,14 +165,13 @@ request.onload = function () {
 			else return this.substr(0, miejsce) + znak + this.substr(miejsce + 1);
 		}
 		//to co nizej dziala
-		var bgcolch = "";
 		for (i = 0; i <= 5; i++) {
-			bgcolch = '#w' + i
 			$('#w' + i).on("click", { nr: i }, notify);
 		}
 		//$(".basic").on("click", notify);
 		function notify(event) {
 			alert("clicked " + event.data.nr);
+			$("#w1").css('background', 'green');
 			//document.getElementById(bgcolch).class = "selected";
 		}
 
