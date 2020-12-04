@@ -168,10 +168,7 @@ request.onload = function () {
 		var bgcolch = "";
 		for (i = 0; i <= 5; i++) {
 			bgcolch = '#w' + i
-			//$('#w' + i).on("click", { nr: i }, notify);
-			$('#w' + i).click(function () {
-				$('#w' + i).addClass('selected');
-			});
+			$('#w' + i).on("click", { nr: i }, notify);
 		}
 		//$(".basic").on("click", notify);
 		function notify(event) {

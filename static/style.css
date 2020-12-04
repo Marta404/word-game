@@ -19,7 +19,7 @@ body
 #instruction h2{
 	  color: #ef920c;
   }
-.selected{
+.selected a:focus{
 	background-color: #ef920c !important;
 }
 
