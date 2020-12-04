@@ -99,6 +99,9 @@ class Admin(UserMixin, db.Model):
         return '<Question %r>' % self.id
     # to retrieve what has been created; to get from the database the question and it's id
 
+    def __repr__(self):
+        return '<Admin %r>' % self.id
+
 
 class QuestionSchema(ma.SQLAlchemyAutoSchema):
     class Meta:
