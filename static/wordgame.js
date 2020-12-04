@@ -171,7 +171,7 @@ request.onload = function () {
 		//$(".basic").on("click", notify);
 		function notify(event) {
 			alert("clicked " + event.data.nr);
-			$("#w1").css('background', 'green');
+			$("#w" + event.data.nr).css('background', 'green');
 			//document.getElementById(bgcolch).class = "selected";
 		}
 
