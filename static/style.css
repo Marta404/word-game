@@ -9,7 +9,11 @@ body
 	padding:0;
 }
  /*color:#ef920c; *orange*/ 
-  
+#instruction{
+	background-color: #fefefe;
+	padding: 15px;
+	box-sizing: border-box;
+  }
 #container
 {
 	max-width:900px;
