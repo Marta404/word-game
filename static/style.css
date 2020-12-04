@@ -19,6 +19,10 @@ body
 #instruction h2{
 	  color: #ef920c;
   }
+.selected{
+	background-color: #ef920c;
+}
+
 #container
 {
 	max-width:900px;

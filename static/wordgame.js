@@ -173,7 +173,7 @@ request.onload = function () {
 		//$(".basic").on("click", notify);
 		function notify(event) {
 			alert("clicked " + event.data.nr);
-			document.getElementById(bgcolch).style.background = "#cccccc";
+			document.getElementById(bgcolch).class = "selected";
 		}
 
 	} else {
