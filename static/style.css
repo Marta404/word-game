@@ -20,7 +20,7 @@ body
 	  color: #ef920c;
   }
 .selected{
-	background-color: #ef920c;
+	background-color: #ef920c !important;
 }
 
 #container
