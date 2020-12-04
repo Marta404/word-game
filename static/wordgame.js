@@ -173,8 +173,11 @@ request.onload = function () {
 		//$(".basic").on("click", notify);
 		function notify(event) {
 			alert("clicked " + event.data.nr);
-			document.getElementById(bgcolch).class = "selected";
+			//document.getElementById(bgcolch).class = "selected";
 		}
+		$('#w' + i).click(function () {
+			$('#w' + i).addClass('selected');
+		});
 
 	} else {
 		console.log('error');
