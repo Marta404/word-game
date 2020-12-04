@@ -64,6 +64,11 @@ class QuestionSchema(ma.SQLAlchemyAutoSchema):
         model = Todo
 
 
+class AdminSchema(ma.SQLAlchemyAutoSchema):
+    class Meta:
+        model = Admin
+
+
 def check_auth(email, password):
     if (email == valid_email and valid_pwhash == bcrypt.hashpw(password.encode('utf-8'), valid_pwhash)):
         return True
