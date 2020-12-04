@@ -13,6 +13,11 @@ body
 	background-color: #fefefe;
 	padding: 15px;
 	box-sizing: border-box;
+	margin-top: 20px;
+  }
+  
+#instruction h2{
+	  color: #ef920c;
   }
 #container
 {
