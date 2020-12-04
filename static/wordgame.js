@@ -164,14 +164,17 @@ request.onload = function () {
 			if (miejsce > this.length - 1) return this.toString();
 			else return this.substr(0, miejsce) + znak + this.substr(miejsce + 1);
 		}
-		////to co nizej dziala
-		// for (i = 0; i <= 5; i++) {
-		// 	$('#w' + i).on("click", { nr: i }, notify);
-		// }
-		// //$(".basic").on("click", notify);
-		// function notify(event) {
-		// 	alert("clicked " + event.data.nr);
-		// }
+		//to co nizej dziala
+		var bgcolch = "";
+		for (i = 0; i <= 5; i++) {
+			bgcolch = '#w' + i
+			$('#w' + i).on("click", { nr: i }, notify);
+		}
+		//$(".basic").on("click", notify);
+		function notify(event) {
+			alert("clicked " + event.data.nr);
+			document.getElementById(bgcolch).style.background = "#cccccc";
+		}
 
 	} else {
 		console.log('error');
