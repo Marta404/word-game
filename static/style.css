@@ -19,9 +19,7 @@ body
 #instruction h2{
 	  color: #ef920c;
   }
-.selected a:focus{
-	background-color: #ef920c !important;
-}
+
 
 #container
 {
@@ -392,3 +390,7 @@ a.pp-5:hover{
 	background-color: #f8f9fa;
 }
 } 
+
+.selected li a:focus{
+	background-color: #ef920c !important;
+}
