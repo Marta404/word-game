@@ -168,16 +168,17 @@ request.onload = function () {
 		var bgcolch = "";
 		for (i = 0; i <= 5; i++) {
 			bgcolch = '#w' + i
-			$('#w' + i).on("click", { nr: i }, notify);
+			//$('#w' + i).on("click", { nr: i }, notify);
+			$('#w' + i).click(function () {
+				$('#w' + i).addClass('selected');
+			});
 		}
 		//$(".basic").on("click", notify);
 		function notify(event) {
 			alert("clicked " + event.data.nr);
 			//document.getElementById(bgcolch).class = "selected";
 		}
-		$('#w' + i).click(function () {
-			$('#w' + i).addClass('selected');
-		});
+
 
 	} else {
 		console.log('error');
