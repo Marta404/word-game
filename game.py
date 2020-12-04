@@ -58,7 +58,10 @@ def admin_logout():
 @app.route('/admin/account/')
 # @requires_login
 def account():
-    return render_template('account.html')
+    admins = Admin.query.order_by(Admin.id).all()
+    # templates word-game.html + add.questions.html body content
+    return render_template('account.html', admins=admins)
+    # return render_template('account.html')
 
 
 @app.route('/admin/', methods=['POST', 'GET'])
@@ -102,55 +105,6 @@ class QuestionSchema(ma.SQLAlchemyAutoSchema):
         model = Todo
 
 
-# new user login
-######################################
-
-
-# @login_manager.user_loader
-# def load_user(admin_id):
-#     return Admin.query.get(int(admin_id))
-
-
-# @app.route('/admin/')
-# def admin():
-#     return render_template('login.html')
-
-
-# @app.route('/admin/', methods=['POST'])
-# # for testing admin panel navigation - temporary directory
-# def admin_post():
-#     email = request.form.get('email1')
-#     password = request.form.get('pwd')
-
-#     admin = Admin.query.filter_by(email=email).first()
-
-#     if not admin and not check_password_hash(admin.password, password):
-#         flash('Please check your login details and try again.')
-#         # return redirect(url_for('admin'))
-#         # return redirect('/admin/add/')
-#         return 'redirect here'
-
-#     login_user(admin)
-
-#     # return redirect(url_for('admin/account'))
-#     return redirect('/admin/account/')
-
-
-# @app.route('/admin/logout/')
-# @login_required
-# def logout():
-#     logout_user()
-#     return redirect('/admin/')
-
-
-# @app.route('/admin/account/')
-# @login_required
-# def admin_account():
-#     admin = current_user.fname + " " + current_user.sname
-#     return render_template('account.html', admin_name=admin)
-    ##############################################################
-
-
 @app.route('/', methods=['GET', 'POST'])
 def root():
     # templates word-game.html + newgame.html body content
@@ -164,25 +118,6 @@ def api():
     question_schema = QuestionSchema(many=True)
     output = question_schema.dump(questions)
     return jsonify({'questions': output})
-
-
-# @app.route('/admin/', methods=['POST', 'GET'])
-# # for testing admin panel navigation - temporary directory
-# def admin(name=None):
-#     # return render_template('login.html')
-#     if request.method == 'POST':
-#         # print(request.form)
-#         email = request.form['email1']
-#         name = {name: email}
-#         return redirect('/admin/account/')
-#     else:
-#         return render_template('login.html')
-
-
-# @app.route('/admin/account/')
-# def admin_account():
-#     # templates word-game.html + edit.questions.html body content
-#     return render_template('account.html')
 
 
 # in test mode - admin panel directories - no credentials required yet
