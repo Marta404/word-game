@@ -30,6 +30,7 @@ class Admin:
 # global variable for all the admins:
 users = []
 users.append(Admin(id=1, username='admin@a.com', password='admin'))
+users.append(Admin(id=2, username='admin2@a.com', password='admin2'))
 
 
 ###############################################################
@@ -47,7 +48,6 @@ def before_request():
     if 'user_id' in session:
         user = [x for x in users if x.id == session['user_id']][0]
         g.user = user
-
 
         # database
 db = SQLAlchemy(app)
@@ -189,6 +189,9 @@ def api():
 @app.route('/admin/add/', methods=['POST', 'GET'])
 # add methods POST and GET to handle data flow to and from the database
 def admin_add():
+    if not g.user:
+        return redirect(url_for('admin'))
+
     if request.method == 'POST':
         # get what is in input field called question and sent to the db
         task_question = request.form['question']
@@ -215,6 +218,9 @@ def admin_add():
 @app.route('/admin/delete/<int:id>')
 # to delete a question from the list/db
 def delete(id):
+    if not g.user:
+        return redirect(url_for('admin'))
+
     task_to_delete = Todo.query.get_or_404(id)
 
     try:
@@ -229,6 +235,9 @@ def delete(id):
 
 @app.route('/admin/edit/<int:id>', methods=['POST', 'GET'])
 def admin_edit(id):
+    if not g.user:
+        return redirect(url_for('admin'))
+
     question = Todo.query.get_or_404(id)
 
     if request.method == 'POST':
