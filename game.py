@@ -93,7 +93,7 @@ class QuestionSchema(ma.SQLAlchemyAutoSchema):
 def admin():
     if request.method == 'POST':
         # remove admin details from the session if credentials incorrect
-        session.pop['user_id', None]
+        session.pop('user_id', None)
         username = request.form['email1']
         password = request.form['pwd']
 
