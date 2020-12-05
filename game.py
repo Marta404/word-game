@@ -91,7 +91,7 @@ def admin_logout():
     return redirect(url_for('admin'))
 
 
-@app.route('/admin/account/', methods=['POST', 'GET'])
+@app.route('/account/', methods=['POST', 'GET'])
 # @requires_login
 def account():
     admins = Admin.query.order_by(Admin.id).all()
