@@ -7,8 +7,18 @@
 	<!-- div with forms-->
 
 	<h1>My account details</h1>
+	<table>
+		<tr>
+			<th>Admin ID</th>
+			<th>Admin Email</th>
+		</tr>
+		<tr>
+			<td>{{g.user.id}}</td>
+			<td>{{g.user.name}}</td>
+		</tr>
+	</table>
 
-	{% if admin|length < 1 %}
+	<!-- {% if admin|length < 1 %}
 	<h4>There is no data.</h4>
 	{% else %}
 	<h4>My account details</h4>
@@ -34,7 +44,7 @@
 		</tr>
 		{% endfor %}
 	</table>
-	{% endif %}
+	{% endif %} -->
 
 
 </div> <!-- div with forms end-->

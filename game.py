@@ -3,7 +3,7 @@
 # from functools import wraps
 # from flask import Flask
 #################################################################
-from flask import Flask, url_for, request, render_template, redirect, jsonify, flash, session
+from flask import Flask, url_for, request, render_template, redirect, jsonify, flash, g, session
 # to set up database I'll use SQLAlchemy
 from flask_sqlalchemy import SQLAlchemy
 # to create json from database
@@ -38,16 +38,18 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///gamedb.db'
 # new add secret key
 app.config['SECRET_KEY'] = 'THISisMYsecretKey009'
+
+
+@app.before_request
+def before_request():
+    if 'user_id' in session:
+        user = [x for x in users if x.id == session['user_id']][0]
+        g.user = user
+
+
+        # database
 db = SQLAlchemy(app)
 ma = Marshmallow(app)
-# new to login
-###login_manager = LoginManager()
-# login_manager.init.app(app)
-# new to login, userMix will enable a few additional methods
-######################################################################
-# app.secret_key = 'THISisMYsecretKey009'
-# valid_email = 'admin@a.com'
-# valid_pwhash = bcrypt.hashpw('secretpass'.encode('utf-8'), bcrypt.gensalt())
 
 
 class Todo(db.Model):
