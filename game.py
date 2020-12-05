@@ -1,8 +1,3 @@
-# from workbook
-# import bcrypt
-# from functools import wraps
-# from flask import Flask
-#################################################################
 from flask import Flask, url_for, request, render_template, redirect, jsonify, flash, g, session
 # to set up database I'll use SQLAlchemy
 from flask_sqlalchemy import SQLAlchemy
@@ -10,12 +5,9 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow
 # to set up an automatic data in the database when creating a new entry
 from datetime import datetime
-# new to use login
-# , login_user, login_required, logout_user, current_user
-##from flask_login import LoginManager, UserMixin
-##from werkzeug.security import generate_password_hash, check_password_hash
 
 
+# for login function
 class Admin:
     def __init__(self, id, username, password):
         self.id = id
@@ -31,7 +23,7 @@ class Admin:
 users = []
 users.append(Admin(id=1, username='admin@a.com', password='admin'))
 users.append(Admin(id=2, username='admin2@a.com', password='admin2'))
-
+users.append(Admin(id=3, username='test@a.com', password='test'))
 
 ###############################################################
 app = Flask(__name__)
@@ -49,6 +41,7 @@ def before_request():
         user = [x for x in users if x.id == session['user_id']][0]
         g.user = user
 
+
         # database
 db = SQLAlchemy(app)
 ma = Marshmallow(app)
@@ -65,6 +58,11 @@ class Todo(db.Model):
         return '<Question %r>' % self.id
 
 
+class QuestionSchema(ma.SQLAlchemyAutoSchema):
+    class Meta:
+        model = Todo
+
+# for the next Patch
 # class Admin(UserMixin, db.Model):
 #     # table for admin
 #     id = db.Column(db.Integer, primary_key=True)
@@ -74,23 +72,13 @@ class Todo(db.Model):
 #     password = db.Column(db.String(50), nullable=False)
 #     date_created = db.Column(db.DateTime, default=datetime.utcnow)
 
-    # to retrieve what has been created; to get from the database the question and it's id
-
     # def __repr__(self):
     #     return '<Admin %r>' % self.id
-
-
-class QuestionSchema(ma.SQLAlchemyAutoSchema):
-    class Meta:
-        model = Todo
-
 
 # class AdminSchema(ma.SQLAlchemyAutoSchema):
 #     class Meta:
 #         model = Admin
-
 ##################################################
-# create a global variable for an admin
 
 
 @app.route('/admin/', methods=['POST', 'GET'])
@@ -125,67 +113,6 @@ def admin_logout():
     return redirect(url_for('admin'))
 
 
-#########################################################################################################
-# def check_auth(email, password):
-#     if (email == valid_email and valid_pwhash == bcrypt.hashpw(password.encode('utf-8'), valid_pwhash)):
-#         return True
-#     return False
-
-
-# def requires_login(f):
-#     @wraps(f)
-#     def decorated(*args, **kwargs):
-#         status = session.get('logged_in', False)
-#         if not status:
-#             return redirect('/admin/')
-#         return f(*args, **kwargs)
-#     return decorated
-
-
-# @app.route('/admin/logout/')
-# def admin_logout():
-#     session['logged_in'] = False
-#     return redirect(url_for('admin'))
-
-
-# @app.route('/account/', methods=['POST', 'GET'])
-# # @requires_login
-# def account():
-#     admins = Admin.query.order_by(Admin.id).all()
-#     # templates word-game.html + add.questions.html body content
-#     return render_template('account.html', admins=admins)
-#     # return render_template('account.html')
-
-
-# @app.route('/admin/', methods=['POST', 'GET'])
-# def admin():
-#     if request.method == 'POST':
-#         user = request.form['email1']
-#         pw = request.form['pwd']
-
-#         if check_auth(user, pw):
-#             session['logged_in'] = True
-#             return 'logged'
-#     return render_template('login.html')
-
-    ######################################################################
-
-
-@app.route('/', methods=['GET', 'POST'])
-def root():
-    # templates word-game.html + newgame.html body content
-    return render_template('newgame.html')
-
-
-@app.route('/api/')
-def api():
-    questions = Todo.query.order_by(Todo.week).all()
-    question_schema = QuestionSchema(many=True)
-    output = question_schema.dump(questions)
-    return jsonify({'questions': output})
-
-
-# in test mode - admin panel directories - no credentials required yet
 @app.route('/admin/add/', methods=['POST', 'GET'])
 # add methods POST and GET to handle data flow to and from the database
 def admin_add():
@@ -253,6 +180,23 @@ def admin_edit(id):
 
     else:
         return render_template('edit.questions.html', question=question)
+
+############################### GAME ##################################################
+
+
+@app.route('/', methods=['GET', 'POST'])
+def root():
+    # templates word-game.html + newgame.html body content
+    return render_template('newgame.html')
+
+
+@app.route('/api/')
+def api():
+    questions = Todo.query.order_by(Todo.week).all()
+    question_schema = QuestionSchema(many=True)
+    output = question_schema.dump(questions)
+    return jsonify({'questions': output})
+############################################################################################
 
 
 @app.errorhandler(404)
