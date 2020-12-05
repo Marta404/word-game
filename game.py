@@ -1,7 +1,7 @@
 # from workbook
-import bcrypt
-from functools import wraps
-from flask import Flask
+# import bcrypt
+# from functools import wraps
+# from flask import Flask
 #################################################################
 from flask import Flask, url_for, request, render_template, redirect, jsonify, flash, session
 # to set up database I'll use SQLAlchemy
@@ -12,7 +12,7 @@ from flask_marshmallow import Marshmallow
 from datetime import datetime
 # new to use login
 # , login_user, login_required, logout_user, current_user
-from flask_login import LoginManager, UserMixin
+##from flask_login import LoginManager, UserMixin
 ##from werkzeug.security import generate_password_hash, check_password_hash
 
 
