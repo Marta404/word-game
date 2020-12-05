@@ -91,6 +91,19 @@ class QuestionSchema(ma.SQLAlchemyAutoSchema):
 
 @app.route('/admin/', methods=['POST', 'GET'])
 def admin():
+    if request.method == 'POST':
+        # remove admin details from the session if credentials incorrect
+        session.pop['user_id', None]
+        username = request.form['email1']
+        password = request.form['pwd']
+
+        user = [x for x in users if x.username == username][0]
+        if user and user.password == password:
+            session['user_id'] = user.id
+            return redirect(url_for('account'))
+
+        return redirect(url_for('admin'))
+
     return render_template('login.html')
 
 
