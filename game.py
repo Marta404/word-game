@@ -42,6 +42,8 @@ app.config['SECRET_KEY'] = 'THISisMYsecretKey009'
 
 @app.before_request
 def before_request():
+    g.user = None
+
     if 'user_id' in session:
         user = [x for x in users if x.id == session['user_id']][0]
         g.user = user
