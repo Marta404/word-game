@@ -29,7 +29,7 @@ class Admin:
 
 # global variable for all the admins:
 users = []
-users.append(Admin(id=1, username='admin@a.com', passwoerd='admin'))
+users.append(Admin(id=1, username='admin@a.com', password='admin'))
 
 
 ###############################################################
