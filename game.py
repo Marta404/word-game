@@ -16,6 +16,23 @@ from flask_login import LoginManager, UserMixin
 ##from werkzeug.security import generate_password_hash, check_password_hash
 
 
+class Admin:
+    def __init__(self, id, username, password):
+        self.id = id
+        self.username = username
+        self.password = password
+        # to check if it works:
+
+    def __repr__(self):
+        return f'<Admin: {self.username}>'
+
+
+# global variable for all the admins:
+users = []
+users.append(Admin(id=1, username='admin@a.com', passwoerd='admin'))
+
+
+###############################################################
 app = Flask(__name__)
 # where the database is located, the database is called test.db
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///gamedb.db'
@@ -28,9 +45,9 @@ ma = Marshmallow(app)
 # login_manager.init.app(app)
 # new to login, userMix will enable a few additional methods
 ######################################################################
-app.secret_key = 'THISisMYsecretKey009'
-valid_email = 'admin@a.com'
-valid_pwhash = bcrypt.hashpw('secretpass'.encode('utf-8'), bcrypt.gensalt())
+# app.secret_key = 'THISisMYsecretKey009'
+# valid_email = 'admin@a.com'
+# valid_pwhash = bcrypt.hashpw('secretpass'.encode('utf-8'), bcrypt.gensalt())
 
 
 class Todo(db.Model):
@@ -44,19 +61,19 @@ class Todo(db.Model):
         return '<Question %r>' % self.id
 
 
-class Admin(UserMixin, db.Model):
-    # table for admin
-    id = db.Column(db.Integer, primary_key=True)
-    fname = db.Column(db.String(50), nullable=False)
-    sname = db.Column(db.String(50), nullable=False)
-    email = db.Column(db.String(50), nullable=False, unique=True)
-    password = db.Column(db.String(50), nullable=False)
-    date_created = db.Column(db.DateTime, default=datetime.utcnow)
+# class Admin(UserMixin, db.Model):
+#     # table for admin
+#     id = db.Column(db.Integer, primary_key=True)
+#     fname = db.Column(db.String(50), nullable=False)
+#     sname = db.Column(db.String(50), nullable=False)
+#     email = db.Column(db.String(50), nullable=False, unique=True)
+#     password = db.Column(db.String(50), nullable=False)
+#     date_created = db.Column(db.DateTime, default=datetime.utcnow)
 
     # to retrieve what has been created; to get from the database the question and it's id
 
-    def __repr__(self):
-        return '<Admin %r>' % self.id
+    # def __repr__(self):
+    #     return '<Admin %r>' % self.id
 
 
 class QuestionSchema(ma.SQLAlchemyAutoSchema):
@@ -64,52 +81,71 @@ class QuestionSchema(ma.SQLAlchemyAutoSchema):
         model = Todo
 
 
-class AdminSchema(ma.SQLAlchemyAutoSchema):
-    class Meta:
-        model = Admin
+# class AdminSchema(ma.SQLAlchemyAutoSchema):
+#     class Meta:
+#         model = Admin
 
-
-def check_auth(email, password):
-    if (email == valid_email and valid_pwhash == bcrypt.hashpw(password.encode('utf-8'), valid_pwhash)):
-        return True
-    return False
-
-
-def requires_login(f):
-    @wraps(f)
-    def decorated(*args, **kwargs):
-        status = session.get('logged_in', False)
-        if not status:
-            return redirect('/admin/')
-        return f(*args, **kwargs)
-    return decorated
-
-
-@app.route('/admin/logout/')
-def admin_logout():
-    session['logged_in'] = False
-    return redirect(url_for('admin'))
-
-
-@app.route('/account/', methods=['POST', 'GET'])
-# @requires_login
-def account():
-    admins = Admin.query.order_by(Admin.id).all()
-    # templates word-game.html + add.questions.html body content
-    return render_template('account.html', admins=admins)
-    # return render_template('account.html')
+##################################################
+# create a global variable for an admin
 
 
 @app.route('/admin/', methods=['POST', 'GET'])
 def admin():
-    if request.method == 'POST':
-        user = request.form['email1']
-        pw = request.form['pwd']
-
-        if check_auth(user, pw):
-            session['logged_in'] = True
-            return 'logged'
     return render_template('login.html')
+
+
+@app.route('/account/', methods=['POST', 'GET'])
+def account():
+    return render_template('account.html')
+
+
+@app.route('/admin/logout/')
+def admin_logout():
+    return redirect(url_for('admin'))
+
+
+#########################################################################################################
+# def check_auth(email, password):
+#     if (email == valid_email and valid_pwhash == bcrypt.hashpw(password.encode('utf-8'), valid_pwhash)):
+#         return True
+#     return False
+
+
+# def requires_login(f):
+#     @wraps(f)
+#     def decorated(*args, **kwargs):
+#         status = session.get('logged_in', False)
+#         if not status:
+#             return redirect('/admin/')
+#         return f(*args, **kwargs)
+#     return decorated
+
+
+# @app.route('/admin/logout/')
+# def admin_logout():
+#     session['logged_in'] = False
+#     return redirect(url_for('admin'))
+
+
+# @app.route('/account/', methods=['POST', 'GET'])
+# # @requires_login
+# def account():
+#     admins = Admin.query.order_by(Admin.id).all()
+#     # templates word-game.html + add.questions.html body content
+#     return render_template('account.html', admins=admins)
+#     # return render_template('account.html')
+
+
+# @app.route('/admin/', methods=['POST', 'GET'])
+# def admin():
+#     if request.method == 'POST':
+#         user = request.form['email1']
+#         pw = request.form['pwd']
+
+#         if check_auth(user, pw):
+#             session['logged_in'] = True
+#             return 'logged'
+#     return render_template('login.html')
 
     ######################################################################
 
