@@ -113,6 +113,9 @@ def admin():
 
 @app.route('/account/', methods=['POST', 'GET'])
 def account():
+    if not g.user:
+        return redirect(url_for('admin'))
+
     return render_template('account.html')
 
 
