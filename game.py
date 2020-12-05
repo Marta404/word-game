@@ -121,6 +121,7 @@ def account():
 
 @app.route('/admin/logout/')
 def admin_logout():
+    session.pop('user_id', None)
     return redirect(url_for('admin'))
 
 
