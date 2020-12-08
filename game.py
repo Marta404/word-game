@@ -7,7 +7,7 @@ from flask_marshmallow import Marshmallow
 from datetime import datetime
 
 
-# for login function
+# for login function for the admins
 class Admin:
     def __init__(self, id, username, password):
         self.id = id
